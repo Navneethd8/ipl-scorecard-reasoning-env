@@ -33,7 +33,7 @@
       "observability": "full"
     },
 
-    "techniques": ["structured_data_reasoning", "sports_analytics", "arithmetic"]
+    "techniques": []
   },
 
   "scoring": {
