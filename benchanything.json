@@ -1,0 +1,50 @@
+{
+  "id": "ipl-scorecard-reasoning",
+  "adapter": "adapter.py",
+  "name": "IPL Scorecard Reasoning",
+  "description": "Evaluate whether an agent can answer deterministic cricket scorecard questions from real Indian Premier League data.",
+
+  "binding_vow": {
+    "version": "1.0.0",
+    "tier": "tier1",
+    "description": "Each episode presents a compact scorecard derived from public Cricsheet Indian Premier League ball-by-ball data. The agent must answer one factual or arithmetic question, such as the winner, victory margin, chase target, powerplay comparison, death-overs runs, or remaining chase runs after 10 overs. Good agents read the structured scorecard carefully, perform the small calculation when needed, and return only the requested value.",
+
+    "observation_space": {
+      "type": "json",
+      "description": "{ \"source\": object, \"instructions\": string, \"question\": string, \"match\": { \"match_id\": string, \"date\": string, \"season\": string, \"event\": string, \"match_number\": number|null, \"city\": string|null, \"venue\": string|null, \"teams\": string[], \"toss\": object, \"result\": object, \"scorecard\": [{ \"team\": string, \"total_runs\": number, \"wickets_lost\": number, \"overs_batted\": string, \"over_runs\": number[], \"powerplay_runs\": number, \"death_overs_runs\": number, \"top_batters\": object[], \"best_bowling_figures\": object[] }] } }"
+    },
+
+    "action_space": {
+      "type": "text",
+      "description": "Concise answer text, or JSON with an \"answer\" field"
+    },
+
+    "reward": {
+      "type": "binary",
+      "range": { "low": 0.0, "high": 1.0 },
+      "description": "1.0 if the normalized answer exactly matches the expected scorecard-derived value, 0.0 otherwise"
+    },
+
+    "episode": {
+      "max_steps": 1,
+      "deterministic_reset": true,
+      "supports_seed": true,
+      "parallel_episodes": 1,
+      "observability": "full"
+    },
+
+    "techniques": ["structured_data_reasoning", "sports_analytics", "arithmetic"]
+  },
+
+  "scoring": {
+    "primary_metric": "accuracy",
+    "higher_is_better": true,
+    "metrics": [
+      {
+        "name": "accuracy",
+        "type": "episode_reward",
+        "aggregation": "pass_rate"
+      }
+    ]
+  }
+}
