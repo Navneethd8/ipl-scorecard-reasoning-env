@@ -1,4 +1,4 @@
-const replayUrl = "./data/replay.json";
+const replayUrl = "./data/replay.json?v=learning-1.1.0";
 
 const state = {
   data: null,
