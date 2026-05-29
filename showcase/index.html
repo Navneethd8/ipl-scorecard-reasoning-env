@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>IPL Scorecard Reasoning Showcase</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div class="eyebrow">Mesocosm Showcase</div>
+        <div class="hero-grid">
+          <div>
+            <h1>Can an agent read an IPL scorecard like a cricket analyst?</h1>
+            <p>
+              This showcase replays a real Mesocosm run where Gemini answers
+              deterministic questions from Cricsheet-derived Indian Premier
+              League scorecards.
+            </p>
+            <div class="hero-actions">
+              <a class="button" href="#episodes">Replay Episodes</a>
+              <a class="button secondary" href="https://cricsheet.org/downloads/" target="_blank" rel="noreferrer">Data Source</a>
+            </div>
+          </div>
+          <aside class="score-card">
+            <span class="label">Average Reward</span>
+            <strong id="averageReward">--</strong>
+            <span id="runMeta">Loading replay...</span>
+          </aside>
+        </div>
+      </section>
+
+      <section class="metrics" id="metrics" aria-label="Run metrics"></section>
+
+      <section class="stage" id="episodes">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">Replay</div>
+            <h2>Episode Timeline</h2>
+          </div>
+          <div class="tabs" id="episodeTabs" aria-label="Episode selector"></div>
+        </div>
+
+        <article class="episode-card">
+          <div class="match-header">
+            <div>
+              <span class="label">Question</span>
+              <h3 id="question">Loading...</h3>
+            </div>
+            <div class="reward-pill" id="rewardPill">Reward --</div>
+          </div>
+
+          <div class="teams" id="teams"></div>
+
+          <div class="content-grid">
+            <section class="panel">
+              <div class="panel-title">Scorecard Context</div>
+              <div id="scorecard"></div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-title">Agent Reasoning</div>
+              <pre id="reasoning">Loading...</pre>
+              <div class="answer-row">
+                <div>
+                  <span class="label">Expected</span>
+                  <strong id="expectedAnswer">--</strong>
+                </div>
+                <div>
+                  <span class="label">Parsed Answer</span>
+                  <strong id="givenAnswer">--</strong>
+                </div>
+              </div>
+            </section>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

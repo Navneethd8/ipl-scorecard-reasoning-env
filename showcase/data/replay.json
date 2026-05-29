@@ -1,0 +1,4362 @@
+{
+  "schema_version": "1",
+  "exported_at": "2026-05-29T05:47:56.025944+00:00",
+  "visibility": "private",
+  "domain_id": "fee49ca2-5289-4e2b-bbe4-e081339c6331",
+  "domain_name": "IPL Scorecard Reasoning",
+  "binding_vow_version": "1.0.1",
+  "run": {
+    "id": "3266aeb0-947f-40bd-a200-44cf2029493e",
+    "config": {
+      "domain_id": "fee49ca2-5289-4e2b-bbe4-e081339c6331",
+      "binding_vow_version": "1.0.1",
+      "agent_config": {
+        "model": "gemini/gemini-3.1-flash-lite",
+        "system_prompt": null,
+        "techniques": [],
+        "temperature": 0.0,
+        "max_tokens": 512
+      },
+      "seed_set": [
+        1,
+        13,
+        5,
+        9,
+        10,
+        6,
+        11,
+        12,
+        7,
+        8,
+        2,
+        16,
+        18,
+        4,
+        14
+      ],
+      "num_episodes": 15,
+      "max_parallel": 1,
+      "env_id": "be48cc53-6c0c-4ab9-a7cf-7cfed89f3416"
+    },
+    "requester_id": "229",
+    "status": "completed",
+    "created_at": null,
+    "completed_at": null,
+    "scores": {
+      "average_reward": 0.8666666666666667
+    },
+    "team_id": null,
+    "env_id": "be48cc53-6c0c-4ab9-a7cf-7cfed89f3416"
+  },
+  "episodes": [
+    {
+      "id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-01",
+      "run_id": "3266aeb0-947f-40bd-a200-44cf2029493e",
+      "seed": 1,
+      "status": "completed",
+      "started_at": null,
+      "ended_at": null,
+      "steps": 1,
+      "total_reward": 1.0,
+      "terminal_info": {
+        "correct": "True",
+        "partial_credit": "1.0",
+        "expected_answer": "5 wickets",
+        "normalized_expected": "5 wickets",
+        "given_answer": "the delhi capitals won the match by 5 wickets. answer 5 wickets",
+        "match_id": "1529305",
+        "task_type": "margin",
+        "total_tokens": null
+      }
+    },
+    {
+      "id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-02",
+      "run_id": "3266aeb0-947f-40bd-a200-44cf2029493e",
+      "seed": 13,
+      "status": "completed",
+      "started_at": null,
+      "ended_at": null,
+      "steps": 1,
+      "total_reward": 0.5,
+      "terminal_info": {
+        "correct": "False",
+        "partial_credit": "0.5",
+        "expected_answer": "Mumbai Indians by 6 runs",
+        "normalized_expected": "mumbai indians by 6 runs",
+        "given_answer": "mumbai indians scored 53 runs in the powerplay and royal challengers bengaluru scored 47 runs meaning mumbai indians scored 6 more runs. answer mumbai indians 6",
+        "match_id": "1529297",
+        "task_type": "powerplay",
+        "total_tokens": null
+      }
+    },
+    {
+      "id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-03",
+      "run_id": "3266aeb0-947f-40bd-a200-44cf2029493e",
+      "seed": 5,
+      "status": "completed",
+      "started_at": null,
+      "ended_at": null,
+      "steps": 1,
+      "total_reward": 0.5,
+      "terminal_info": {
+        "correct": "False",
+        "partial_credit": "0.5",
+        "expected_answer": "Mumbai Indians by 1 runs",
+        "normalized_expected": "mumbai indians by 1 runs",
+        "given_answer": "mumbai indians scored 46 runs in the powerplay and gujarat titans scored 45 runs meaning mumbai indians scored more by 1 run. answer mumbai indians 1",
+        "match_id": "1529273",
+        "task_type": "powerplay",
+        "total_tokens": null
+      }
+    },
+    {
+      "id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-04",
+      "run_id": "3266aeb0-947f-40bd-a200-44cf2029493e",
+      "seed": 9,
+      "status": "completed",
+      "started_at": null,
+      "ended_at": null,
+      "steps": 1,
+      "total_reward": 1.0,
+      "terminal_info": {
+        "correct": "True",
+        "partial_credit": "1.0",
+        "expected_answer": "56",
+        "normalized_expected": "56",
+        "given_answer": "to calculate the runs scored by sunrisers hyderabad from overs 16 through 20 we sum the values from the overruns list for the 16th 17th 18th 19th and 20th overs indices 15 to 19 19 8 13 16 0 56. answer 56",
+        "match_id": "1529284",
+        "task_type": "death_overs",
+        "total_tokens": null
+      }
+    },
+    {
+      "id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-05",
+      "run_id": "3266aeb0-947f-40bd-a200-44cf2029493e",
+      "seed": 10,
+      "status": "completed",
+      "started_at": null,
+      "ended_at": null,
+      "steps": 1,
+      "total_reward": 1.0,
+      "terminal_info": {
+        "correct": "True",
+        "partial_credit": "1.0",
+        "expected_answer": "Chennai Super Kings",
+        "normalized_expected": "chennai super kings",
+        "given_answer": "the match result field explicitly states that the chennai super kings won the match. answer chennai super kings",
+        "match_id": "1529276",
+        "task_type": "winner",
+        "total_tokens": null
+      }
+    },
+    {
+      "id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-06",
+      "run_id": "3266aeb0-947f-40bd-a200-44cf2029493e",
+      "seed": 6,
+      "status": "completed",
+      "started_at": null,
+      "ended_at": null,
+      "steps": 1,
+      "total_reward": 1.0,
+      "terminal_info": {
+        "correct": "True",
+        "partial_credit": "1.0",
+        "expected_answer": "7 wickets",
+        "normalized_expected": "7 wickets",
+        "given_answer": "7 wickets",
+        "match_id": "1527692",
+        "task_type": "margin",
+        "total_tokens": null
+      }
+    },
+    {
+      "id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-07",
+      "run_id": "3266aeb0-947f-40bd-a200-44cf2029493e",
+      "seed": 11,
+      "status": "completed",
+      "started_at": null,
+      "ended_at": null,
+      "steps": 1,
+      "total_reward": 1.0,
+      "terminal_info": {
+        "correct": "True",
+        "partial_credit": "1.0",
+        "expected_answer": "158",
+        "normalized_expected": "158",
+        "given_answer": "158",
+        "match_id": "1529285",
+        "task_type": "innings_total",
+        "total_tokens": null
+      }
+    },
+    {
+      "id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-08",
+      "run_id": "3266aeb0-947f-40bd-a200-44cf2029493e",
+      "seed": 12,
+      "status": "completed",
+      "started_at": null,
+      "ended_at": null,
+      "steps": 1,
+      "total_reward": 0.5,
+      "terminal_info": {
+        "correct": "False",
+        "partial_credit": "0.5",
+        "expected_answer": "Rajasthan Royals by 19 runs",
+        "normalized_expected": "rajasthan royals by 19 runs",
+        "given_answer": "rajasthan royals scored 84 runs in the powerplay and punjab kings scored 65 runs meaning rajasthan royals scored 19 more runs. answer rajasthan royals 19",
+        "match_id": "1529283",
+        "task_type": "powerplay",
+        "total_tokens": null
+      }
+    },
+    {
+      "id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-09",
+      "run_id": "3266aeb0-947f-40bd-a200-44cf2029493e",
+      "seed": 7,
+      "status": "completed",
+      "started_at": null,
+      "ended_at": null,
+      "steps": 1,
+      "total_reward": 1.0,
+      "terminal_info": {
+        "correct": "True",
+        "partial_credit": "1.0",
+        "expected_answer": "MR Marsh",
+        "normalized_expected": "mr marsh",
+        "given_answer": "mr marsh",
+        "match_id": "1529293",
+        "task_type": "player_of_match",
+        "total_tokens": null
+      }
+    },
+    {
+      "id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-10",
+      "run_id": "3266aeb0-947f-40bd-a200-44cf2029493e",
+      "seed": 8,
+      "status": "completed",
+      "started_at": null,
+      "ended_at": null,
+      "steps": 1,
+      "total_reward": 1.0,
+      "terminal_info": {
+        "correct": "True",
+        "partial_credit": "1.0",
+        "expected_answer": "0",
+        "normalized_expected": "0",
+        "given_answer": "sunrisers hyderabad were bowled out in 14.5 overs meaning they did not face any deliveries in the 16th through 20th overs. answer 0",
+        "match_id": "1529299",
+        "task_type": "death_overs",
+        "total_tokens": null
+      }
+    },
+    {
+      "id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-11",
+      "run_id": "3266aeb0-947f-40bd-a200-44cf2029493e",
+      "seed": 2,
+      "status": "completed",
+      "started_at": null,
+      "ended_at": null,
+      "steps": 1,
+      "total_reward": 1.0,
+      "terminal_info": {
+        "correct": "True",
+        "partial_credit": "1.0",
+        "expected_answer": "Gujarat Titans",
+        "normalized_expected": "gujarat titans",
+        "given_answer": "the match result field explicitly states that the gujarat titans won the match by 1 run. answer gujarat titans",
+        "match_id": "1527687",
+        "task_type": "winner",
+        "total_tokens": null
+      }
+    },
+    {
+      "id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-12",
+      "run_id": "3266aeb0-947f-40bd-a200-44cf2029493e",
+      "seed": 16,
+      "status": "completed",
+      "started_at": null,
+      "ended_at": null,
+      "steps": 1,
+      "total_reward": 1.0,
+      "terminal_info": {
+        "correct": "True",
+        "partial_credit": "1.0",
+        "expected_answer": "RG Sharma",
+        "normalized_expected": "rg sharma",
+        "given_answer": "comparing the top batters from both teams rg sharma scored 84 runs which is the highest individual score in the match. answer rg sharma",
+        "match_id": "1529290",
+        "task_type": "highest_scorer",
+        "total_tokens": null
+      }
+    },
+    {
+      "id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-13",
+      "run_id": "3266aeb0-947f-40bd-a200-44cf2029493e",
+      "seed": 18,
+      "status": "completed",
+      "started_at": null,
+      "ended_at": null,
+      "steps": 1,
+      "total_reward": 1.0,
+      "terminal_info": {
+        "correct": "True",
+        "partial_credit": "1.0",
+        "expected_answer": "7 wickets",
+        "normalized_expected": "7 wickets",
+        "given_answer": "the victory margin is explicitly stated in the match result field as 7 wickets. answer 7 wickets",
+        "match_id": "1529302",
+        "task_type": "margin",
+        "total_tokens": null
+      }
+    },
+    {
+      "id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-14",
+      "run_id": "3266aeb0-947f-40bd-a200-44cf2029493e",
+      "seed": 4,
+      "status": "completed",
+      "started_at": null,
+      "ended_at": null,
+      "steps": 1,
+      "total_reward": 0.5,
+      "terminal_info": {
+        "correct": "False",
+        "partial_credit": "0.5",
+        "expected_answer": "Punjab Kings by 25 runs",
+        "normalized_expected": "punjab kings by 25 runs",
+        "given_answer": "punjab kings scored 72 runs in the powerplay and delhi capitals scored 47 runs meaning punjab kings scored 25 more runs. answer punjab kings 25",
+        "match_id": "1529298",
+        "task_type": "powerplay",
+        "total_tokens": null
+      }
+    },
+    {
+      "id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-15",
+      "run_id": "3266aeb0-947f-40bd-a200-44cf2029493e",
+      "seed": 14,
+      "status": "completed",
+      "started_at": null,
+      "ended_at": null,
+      "steps": 1,
+      "total_reward": 1.0,
+      "terminal_info": {
+        "correct": "True",
+        "partial_credit": "1.0",
+        "expected_answer": "220",
+        "normalized_expected": "220",
+        "given_answer": "220",
+        "match_id": "1529307",
+        "task_type": "innings_total",
+        "total_tokens": null
+      }
+    }
+  ],
+  "traces": {
+    "3266aeb0-947f-40bd-a200-44cf2029493e-episode-01": [
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-01",
+        "step": 0,
+        "timestamp": null,
+        "event_type": "episode_start",
+        "payload": {
+          "seed": 1
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-01",
+        "step": 0,
+        "timestamp": null,
+        "event_type": "observation",
+        "payload": {
+          "phase": "start",
+          "data": {
+            "source": {
+              "license_note": "Cricsheet publishes freely available ball-by-ball cricket data; this file stores compact derived scorecard summaries for benchmark episodes.",
+              "name": "Cricsheet Indian Premier League JSON data",
+              "retrieved_utc": "2026-05-29",
+              "url": "https://cricsheet.org/downloads/ipl_json.zip"
+            },
+            "seed": 1,
+            "instructions": "Answer the question using the supplied IPL scorecard. Reply with only the requested value, or JSON like {\"answer\": \"...\"}.",
+            "question": "What was the victory margin? Answer like '35 runs' or '7 wickets'.",
+            "match": {
+              "match_id": "1529305",
+              "date": "2026-05-17",
+              "season": "2026",
+              "event": "Indian Premier League",
+              "match_number": 62,
+              "city": "Delhi",
+              "venue": "Arun Jaitley Stadium, Delhi",
+              "teams": [
+                "Rajasthan Royals",
+                "Delhi Capitals"
+              ],
+              "toss": {
+                "decision": "field",
+                "winner": "Delhi Capitals"
+              },
+              "result": {
+                "winner": "Delhi Capitals",
+                "by": {
+                  "wickets": 5
+                },
+                "player_of_match": [
+                  "MA Starc"
+                ]
+              },
+              "scorecard": [
+                {
+                  "team": "Rajasthan Royals",
+                  "total_runs": 193,
+                  "wickets_lost": 8,
+                  "overs_batted": "20.0",
+                  "over_runs": [
+                    12,
+                    7,
+                    16,
+                    5,
+                    18,
+                    17,
+                    11,
+                    6,
+                    6,
+                    6,
+                    13,
+                    23,
+                    12,
+                    8,
+                    6,
+                    5,
+                    3,
+                    8,
+                    6,
+                    5
+                  ],
+                  "powerplay_runs": 75,
+                  "death_overs_runs": 27,
+                  "top_batters": [
+                    {
+                      "player": "Dhruv Jurel",
+                      "runs": 53
+                    },
+                    {
+                      "player": "R Parag",
+                      "runs": 51
+                    },
+                    {
+                      "player": "V Suryavanshi",
+                      "runs": 46
+                    },
+                    {
+                      "player": "YBK Jaiswal",
+                      "runs": 12
+                    },
+                    {
+                      "player": "MD Shanaka",
+                      "runs": 10
+                    }
+                  ],
+                  "best_bowling_figures": [
+                    {
+                      "player": "MA Starc",
+                      "runs_conceded": 40,
+                      "wickets": 4
+                    },
+                    {
+                      "player": "L Ngidi",
+                      "runs_conceded": 24,
+                      "wickets": 2
+                    },
+                    {
+                      "player": "M Tiwari",
+                      "runs_conceded": 27,
+                      "wickets": 2
+                    },
+                    {
+                      "player": "T Vijay",
+                      "runs_conceded": 29,
+                      "wickets": 0
+                    },
+                    {
+                      "player": "AR Patel",
+                      "runs_conceded": 31,
+                      "wickets": 0
+                    }
+                  ]
+                },
+                {
+                  "team": "Delhi Capitals",
+                  "total_runs": 197,
+                  "wickets_lost": 5,
+                  "overs_batted": "19.2",
+                  "over_runs": [
+                    14,
+                    13,
+                    11,
+                    12,
+                    10,
+                    12,
+                    13,
+                    4,
+                    6,
+                    10,
+                    8,
+                    8,
+                    2,
+                    7,
+                    12,
+                    9,
+                    8,
+                    16,
+                    12,
+                    10
+                  ],
+                  "powerplay_runs": 72,
+                  "death_overs_runs": 55,
+                  "top_batters": [
+                    {
+                      "player": "KL Rahul",
+                      "runs": 56
+                    },
+                    {
+                      "player": "Abishek Porel",
+                      "runs": 51
+                    },
+                    {
+                      "player": "AR Patel",
+                      "runs": 34
+                    },
+                    {
+                      "player": "Ashutosh Sharma",
+                      "runs": 18
+                    },
+                    {
+                      "player": "DA Miller",
+                      "runs": 9
+                    }
+                  ],
+                  "best_bowling_figures": [
+                    {
+                      "player": "JC Archer",
+                      "runs_conceded": 35,
+                      "wickets": 2
+                    },
+                    {
+                      "player": "Brijesh Sharma",
+                      "runs_conceded": 44,
+                      "wickets": 2
+                    },
+                    {
+                      "player": "MD Shanaka",
+                      "runs_conceded": 29,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "D Ferreira",
+                      "runs_conceded": 16,
+                      "wickets": 0
+                    },
+                    {
+                      "player": "Yash Raj Punja",
+                      "runs_conceded": 29,
+                      "wickets": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-01",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "model_call",
+        "payload": {
+          "text": "the delhi capitals won the match by 5 wickets. answer 5 wickets",
+          "model": "gemini/gemini-3.1-flash-lite"
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-01",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "action",
+        "payload": {
+          "action": "the delhi capitals won the match by 5 wickets. answer 5 wickets"
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-01",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "step_result",
+        "payload": {
+          "reward": 1.0,
+          "terminated": true,
+          "truncated": false,
+          "info": {
+            "correct": "True",
+            "partial_credit": "1.0",
+            "expected_answer": "5 wickets",
+            "normalized_expected": "5 wickets",
+            "given_answer": "the delhi capitals won the match by 5 wickets. answer 5 wickets",
+            "match_id": "1529305",
+            "task_type": "margin"
+          },
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-01",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "episode_end",
+        "payload": {
+          "total_reward": 1.0,
+          "steps": 1
+        }
+      }
+    ],
+    "3266aeb0-947f-40bd-a200-44cf2029493e-episode-02": [
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-02",
+        "step": 0,
+        "timestamp": null,
+        "event_type": "episode_start",
+        "payload": {
+          "seed": 13
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-02",
+        "step": 0,
+        "timestamp": null,
+        "event_type": "observation",
+        "payload": {
+          "phase": "start",
+          "data": {
+            "source": {
+              "license_note": "Cricsheet publishes freely available ball-by-ball cricket data; this file stores compact derived scorecard summaries for benchmark episodes.",
+              "name": "Cricsheet Indian Premier League JSON data",
+              "retrieved_utc": "2026-05-29",
+              "url": "https://cricsheet.org/downloads/ipl_json.zip"
+            },
+            "seed": 13,
+            "instructions": "Answer the question using the supplied IPL scorecard. Reply with only the requested value, or JSON like {\"answer\": \"...\"}.",
+            "question": "Which team scored more runs in the first six overs, and by how many?",
+            "match": {
+              "match_id": "1529297",
+              "date": "2026-05-10",
+              "season": "2026",
+              "event": "Indian Premier League",
+              "match_number": 54,
+              "city": "Raipur",
+              "venue": "Shaheed Veer Narayan Singh International Stadium, Raipur",
+              "teams": [
+                "Mumbai Indians",
+                "Royal Challengers Bengaluru"
+              ],
+              "toss": {
+                "decision": "field",
+                "winner": "Royal Challengers Bengaluru"
+              },
+              "result": {
+                "winner": "Royal Challengers Bengaluru",
+                "by": {
+                  "wickets": 2
+                },
+                "player_of_match": [
+                  "B Kumar"
+                ]
+              },
+              "scorecard": [
+                {
+                  "team": "Mumbai Indians",
+                  "total_runs": 166,
+                  "wickets_lost": 7,
+                  "overs_batted": "20.0",
+                  "over_runs": [
+                    4,
+                    18,
+                    6,
+                    6,
+                    7,
+                    12,
+                    4,
+                    8,
+                    10,
+                    7,
+                    9,
+                    11,
+                    12,
+                    11,
+                    6,
+                    5,
+                    13,
+                    6,
+                    6,
+                    5
+                  ],
+                  "powerplay_runs": 53,
+                  "death_overs_runs": 35,
+                  "top_batters": [
+                    {
+                      "player": "Tilak Varma",
+                      "runs": 57
+                    },
+                    {
+                      "player": "Naman Dhir",
+                      "runs": 47
+                    },
+                    {
+                      "player": "RG Sharma",
+                      "runs": 22
+                    },
+                    {
+                      "player": "RA Bawa",
+                      "runs": 16
+                    },
+                    {
+                      "player": "WG Jacks",
+                      "runs": 10
+                    }
+                  ],
+                  "best_bowling_figures": [
+                    {
+                      "player": "B Kumar",
+                      "runs_conceded": 23,
+                      "wickets": 4
+                    },
+                    {
+                      "player": "R Shepherd",
+                      "runs_conceded": 18,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "JR Hazlewood",
+                      "runs_conceded": 33,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "Rasikh Salam",
+                      "runs_conceded": 42,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "Suyash Sharma",
+                      "runs_conceded": 21,
+                      "wickets": 0
+                    }
+                  ]
+                },
+                {
+                  "team": "Royal Challengers Bengaluru",
+                  "total_runs": 167,
+                  "wickets_lost": 8,
+                  "overs_batted": "20.0",
+                  "over_runs": [
+                    14,
+                    4,
+                    6,
+                    8,
+                    7,
+                    8,
+                    4,
+                    5,
+                    9,
+                    9,
+                    8,
+                    12,
+                    0,
+                    16,
+                    8,
+                    13,
+                    6,
+                    12,
+                    3,
+                    15
+                  ],
+                  "powerplay_runs": 47,
+                  "death_overs_runs": 49,
+                  "top_batters": [
+                    {
+                      "player": "KH Pandya",
+                      "runs": 73
+                    },
+                    {
+                      "player": "JG Bethell",
+                      "runs": 27
+                    },
+                    {
+                      "player": "JM Sharma",
+                      "runs": 18
+                    },
+                    {
+                      "player": "D Padikkal",
+                      "runs": 12
+                    },
+                    {
+                      "player": "RM Patidar",
+                      "runs": 8
+                    }
+                  ],
+                  "best_bowling_figures": [
+                    {
+                      "player": "C Bosch",
+                      "runs_conceded": 26,
+                      "wickets": 4
+                    },
+                    {
+                      "player": "DL Chahar",
+                      "runs_conceded": 33,
+                      "wickets": 2
+                    },
+                    {
+                      "player": "AM Ghazanfar",
+                      "runs_conceded": 33,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "RA Bawa",
+                      "runs_conceded": 39,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "WG Jacks",
+                      "runs_conceded": 13,
+                      "wickets": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-02",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "model_call",
+        "payload": {
+          "text": "mumbai indians scored 53 runs in the powerplay and royal challengers bengaluru scored 47 runs meaning mumbai indians scored 6 more runs. answer mumbai indians 6",
+          "model": "gemini/gemini-3.1-flash-lite"
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-02",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "action",
+        "payload": {
+          "action": "mumbai indians scored 53 runs in the powerplay and royal challengers bengaluru scored 47 runs meaning mumbai indians scored 6 more runs. answer mumbai indians 6"
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-02",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "step_result",
+        "payload": {
+          "reward": 0.5,
+          "terminated": true,
+          "truncated": false,
+          "info": {
+            "correct": "False",
+            "partial_credit": "0.5",
+            "expected_answer": "Mumbai Indians by 6 runs",
+            "normalized_expected": "mumbai indians by 6 runs",
+            "given_answer": "mumbai indians scored 53 runs in the powerplay and royal challengers bengaluru scored 47 runs meaning mumbai indians scored 6 more runs. answer mumbai indians 6",
+            "match_id": "1529297",
+            "task_type": "powerplay"
+          },
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-02",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "episode_end",
+        "payload": {
+          "total_reward": 0.5,
+          "steps": 1
+        }
+      }
+    ],
+    "3266aeb0-947f-40bd-a200-44cf2029493e-episode-03": [
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-03",
+        "step": 0,
+        "timestamp": null,
+        "event_type": "episode_start",
+        "payload": {
+          "seed": 5
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-03",
+        "step": 0,
+        "timestamp": null,
+        "event_type": "observation",
+        "payload": {
+          "phase": "start",
+          "data": {
+            "source": {
+              "license_note": "Cricsheet publishes freely available ball-by-ball cricket data; this file stores compact derived scorecard summaries for benchmark episodes.",
+              "name": "Cricsheet Indian Premier League JSON data",
+              "retrieved_utc": "2026-05-29",
+              "url": "https://cricsheet.org/downloads/ipl_json.zip"
+            },
+            "seed": 5,
+            "instructions": "Answer the question using the supplied IPL scorecard. Reply with only the requested value, or JSON like {\"answer\": \"...\"}.",
+            "question": "Which team scored more runs in the first six overs, and by how many?",
+            "match": {
+              "match_id": "1529273",
+              "date": "2026-04-20",
+              "season": "2026",
+              "event": "Indian Premier League",
+              "match_number": 30,
+              "city": "Ahmedabad",
+              "venue": "Narendra Modi Stadium, Ahmedabad",
+              "teams": [
+                "Mumbai Indians",
+                "Gujarat Titans"
+              ],
+              "toss": {
+                "decision": "field",
+                "winner": "Gujarat Titans"
+              },
+              "result": {
+                "winner": "Mumbai Indians",
+                "by": {
+                  "runs": 99
+                },
+                "player_of_match": [
+                  "Tilak Varma"
+                ]
+              },
+              "scorecard": [
+                {
+                  "team": "Mumbai Indians",
+                  "total_runs": 199,
+                  "wickets_lost": 5,
+                  "overs_batted": "20.0",
+                  "over_runs": [
+                    2,
+                    9,
+                    10,
+                    6,
+                    5,
+                    14,
+                    8,
+                    4,
+                    10,
+                    7,
+                    13,
+                    7,
+                    3,
+                    5,
+                    19,
+                    4,
+                    15,
+                    26,
+                    10,
+                    22
+                  ],
+                  "powerplay_runs": 46,
+                  "death_overs_runs": 77,
+                  "top_batters": [
+                    {
+                      "player": "Tilak Varma",
+                      "runs": 101
+                    },
+                    {
+                      "player": "Naman Dhir",
+                      "runs": 45
+                    },
+                    {
+                      "player": "HH Pandya",
+                      "runs": 15
+                    },
+                    {
+                      "player": "SA Yadav",
+                      "runs": 15
+                    },
+                    {
+                      "player": "Q de Kock",
+                      "runs": 13
+                    }
+                  ],
+                  "best_bowling_figures": [
+                    {
+                      "player": "K Rabada",
+                      "runs_conceded": 33,
+                      "wickets": 3
+                    },
+                    {
+                      "player": "Mohammed Siraj",
+                      "runs_conceded": 25,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "M Prasidh Krishna",
+                      "runs_conceded": 54,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "Washington Sundar",
+                      "runs_conceded": 13,
+                      "wickets": 0
+                    },
+                    {
+                      "player": "Rashid Khan",
+                      "runs_conceded": 31,
+                      "wickets": 0
+                    }
+                  ]
+                },
+                {
+                  "team": "Gujarat Titans",
+                  "total_runs": 100,
+                  "wickets_lost": 10,
+                  "overs_batted": "15.5",
+                  "over_runs": [
+                    1,
+                    18,
+                    10,
+                    6,
+                    6,
+                    4,
+                    8,
+                    3,
+                    8,
+                    7,
+                    8,
+                    6,
+                    1,
+                    4,
+                    9,
+                    1
+                  ],
+                  "powerplay_runs": 45,
+                  "death_overs_runs": 1,
+                  "top_batters": [
+                    {
+                      "player": "Washington Sundar",
+                      "runs": 26
+                    },
+                    {
+                      "player": "M Shahrukh Khan",
+                      "runs": 17
+                    },
+                    {
+                      "player": "Shubman Gill",
+                      "runs": 14
+                    },
+                    {
+                      "player": "K Rabada",
+                      "runs": 12
+                    },
+                    {
+                      "player": "R Tewatia",
+                      "runs": 8
+                    }
+                  ],
+                  "best_bowling_figures": [
+                    {
+                      "player": "Ashwani Kumar",
+                      "runs_conceded": 24,
+                      "wickets": 4
+                    },
+                    {
+                      "player": "MJ Santner",
+                      "runs_conceded": 16,
+                      "wickets": 2
+                    },
+                    {
+                      "player": "AM Ghazanfar",
+                      "runs_conceded": 17,
+                      "wickets": 2
+                    },
+                    {
+                      "player": "JJ Bumrah",
+                      "runs_conceded": 15,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "HH Pandya",
+                      "runs_conceded": 18,
+                      "wickets": 1
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-03",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "model_call",
+        "payload": {
+          "text": "mumbai indians scored 46 runs in the powerplay and gujarat titans scored 45 runs meaning mumbai indians scored more by 1 run. answer mumbai indians 1",
+          "model": "gemini/gemini-3.1-flash-lite"
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-03",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "action",
+        "payload": {
+          "action": "mumbai indians scored 46 runs in the powerplay and gujarat titans scored 45 runs meaning mumbai indians scored more by 1 run. answer mumbai indians 1"
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-03",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "step_result",
+        "payload": {
+          "reward": 0.5,
+          "terminated": true,
+          "truncated": false,
+          "info": {
+            "correct": "False",
+            "partial_credit": "0.5",
+            "expected_answer": "Mumbai Indians by 1 runs",
+            "normalized_expected": "mumbai indians by 1 runs",
+            "given_answer": "mumbai indians scored 46 runs in the powerplay and gujarat titans scored 45 runs meaning mumbai indians scored more by 1 run. answer mumbai indians 1",
+            "match_id": "1529273",
+            "task_type": "powerplay"
+          },
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-03",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "episode_end",
+        "payload": {
+          "total_reward": 0.5,
+          "steps": 1
+        }
+      }
+    ],
+    "3266aeb0-947f-40bd-a200-44cf2029493e-episode-04": [
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-04",
+        "step": 0,
+        "timestamp": null,
+        "event_type": "episode_start",
+        "payload": {
+          "seed": 9
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-04",
+        "step": 0,
+        "timestamp": null,
+        "event_type": "observation",
+        "payload": {
+          "phase": "start",
+          "data": {
+            "source": {
+              "license_note": "Cricsheet publishes freely available ball-by-ball cricket data; this file stores compact derived scorecard summaries for benchmark episodes.",
+              "name": "Cricsheet Indian Premier League JSON data",
+              "retrieved_utc": "2026-05-29",
+              "url": "https://cricsheet.org/downloads/ipl_json.zip"
+            },
+            "seed": 9,
+            "instructions": "Answer the question using the supplied IPL scorecard. Reply with only the requested value, or JSON like {\"answer\": \"...\"}.",
+            "question": "How many runs did Sunrisers Hyderabad score from overs 16 through 20?",
+            "match": {
+              "match_id": "1529284",
+              "date": "2026-04-29",
+              "season": "2026",
+              "event": "Indian Premier League",
+              "match_number": 41,
+              "city": "Mumbai",
+              "venue": "Wankhede Stadium, Mumbai",
+              "teams": [
+                "Mumbai Indians",
+                "Sunrisers Hyderabad"
+              ],
+              "toss": {
+                "decision": "bat",
+                "winner": "Mumbai Indians"
+              },
+              "result": {
+                "winner": "Sunrisers Hyderabad",
+                "by": {
+                  "wickets": 6
+                },
+                "player_of_match": [
+                  "H Klaasen"
+                ]
+              },
+              "scorecard": [
+                {
+                  "team": "Mumbai Indians",
+                  "total_runs": 243,
+                  "wickets_lost": 5,
+                  "overs_batted": "20.0",
+                  "over_runs": [
+                    6,
+                    15,
+                    16,
+                    7,
+                    16,
+                    18,
+                    15,
+                    17,
+                    3,
+                    11,
+                    13,
+                    19,
+                    7,
+                    4,
+                    14,
+                    21,
+                    6,
+                    13,
+                    8,
+                    14
+                  ],
+                  "powerplay_runs": 78,
+                  "death_overs_runs": 62,
+                  "top_batters": [
+                    {
+                      "player": "RD Rickelton",
+                      "runs": 123
+                    },
+                    {
+                      "player": "WG Jacks",
+                      "runs": 46
+                    },
+                    {
+                      "player": "HH Pandya",
+                      "runs": 31
+                    },
+                    {
+                      "player": "Naman Dhir",
+                      "runs": 22
+                    },
+                    {
+                      "player": "Tilak Varma",
+                      "runs": 7
+                    }
+                  ],
+                  "best_bowling_figures": [
+                    {
+                      "player": "PP Hinge",
+                      "runs_conceded": 54,
+                      "wickets": 2
+                    },
+                    {
+                      "player": "E Malinga",
+                      "runs_conceded": 29,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "Nithish Kumar Reddy",
+                      "runs_conceded": 31,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "Sakib Hussain",
+                      "runs_conceded": 39,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "PJ Cummins",
+                      "runs_conceded": 39,
+                      "wickets": 0
+                    }
+                  ]
+                },
+                {
+                  "team": "Sunrisers Hyderabad",
+                  "total_runs": 249,
+                  "wickets_lost": 4,
+                  "overs_batted": "18.4",
+                  "over_runs": [
+                    11,
+                    14,
+                    18,
+                    19,
+                    12,
+                    18,
+                    23,
+                    11,
+                    4,
+                    4,
+                    16,
+                    18,
+                    8,
+                    13,
+                    4,
+                    19,
+                    8,
+                    13,
+                    16
+                  ],
+                  "powerplay_runs": 92,
+                  "death_overs_runs": 56,
+                  "top_batters": [
+                    {
+                      "player": "TM Head",
+                      "runs": 76
+                    },
+                    {
+                      "player": "H Klaasen",
+                      "runs": 65
+                    },
+                    {
+                      "player": "Abhishek Sharma",
+                      "runs": 45
+                    },
+                    {
+                      "player": "S Arora",
+                      "runs": 30
+                    },
+                    {
+                      "player": "Nithish Kumar Reddy",
+                      "runs": 21
+                    }
+                  ],
+                  "best_bowling_figures": [
+                    {
+                      "player": "AM Ghazanfar",
+                      "runs_conceded": 51,
+                      "wickets": 2
+                    },
+                    {
+                      "player": "HH Pandya",
+                      "runs_conceded": 39,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "TA Boult",
+                      "runs_conceded": 41,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "WG Jacks",
+                      "runs_conceded": 19,
+                      "wickets": 0
+                    },
+                    {
+                      "player": "Ashwani Kumar",
+                      "runs_conceded": 41,
+                      "wickets": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-04",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "model_call",
+        "payload": {
+          "text": "to calculate the runs scored by sunrisers hyderabad from overs 16 through 20 we sum the values from the overruns list for the 16th 17th 18th 19th and 20th overs indices 15 to 19 19  8  13  16  0  56. answer 56",
+          "model": "gemini/gemini-3.1-flash-lite"
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-04",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "action",
+        "payload": {
+          "action": "to calculate the runs scored by sunrisers hyderabad from overs 16 through 20 we sum the values from the overruns list for the 16th 17th 18th 19th and 20th overs indices 15 to 19 19  8  13  16  0  56. answer 56"
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-04",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "step_result",
+        "payload": {
+          "reward": 1.0,
+          "terminated": true,
+          "truncated": false,
+          "info": {
+            "correct": "True",
+            "partial_credit": "1.0",
+            "expected_answer": "56",
+            "normalized_expected": "56",
+            "given_answer": "to calculate the runs scored by sunrisers hyderabad from overs 16 through 20 we sum the values from the overruns list for the 16th 17th 18th 19th and 20th overs indices 15 to 19 19 8 13 16 0 56. answer 56",
+            "match_id": "1529284",
+            "task_type": "death_overs"
+          },
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-04",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "episode_end",
+        "payload": {
+          "total_reward": 1.0,
+          "steps": 1
+        }
+      }
+    ],
+    "3266aeb0-947f-40bd-a200-44cf2029493e-episode-05": [
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-05",
+        "step": 0,
+        "timestamp": null,
+        "event_type": "episode_start",
+        "payload": {
+          "seed": 10
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-05",
+        "step": 0,
+        "timestamp": null,
+        "event_type": "observation",
+        "payload": {
+          "phase": "start",
+          "data": {
+            "source": {
+              "license_note": "Cricsheet publishes freely available ball-by-ball cricket data; this file stores compact derived scorecard summaries for benchmark episodes.",
+              "name": "Cricsheet Indian Premier League JSON data",
+              "retrieved_utc": "2026-05-29",
+              "url": "https://cricsheet.org/downloads/ipl_json.zip"
+            },
+            "seed": 10,
+            "instructions": "Answer the question using the supplied IPL scorecard. Reply with only the requested value, or JSON like {\"answer\": \"...\"}.",
+            "question": "Which team won this IPL match?",
+            "match": {
+              "match_id": "1529276",
+              "date": "2026-04-23",
+              "season": "2026",
+              "event": "Indian Premier League",
+              "match_number": 33,
+              "city": "Mumbai",
+              "venue": "Wankhede Stadium, Mumbai",
+              "teams": [
+                "Chennai Super Kings",
+                "Mumbai Indians"
+              ],
+              "toss": {
+                "decision": "field",
+                "winner": "Mumbai Indians"
+              },
+              "result": {
+                "winner": "Chennai Super Kings",
+                "by": {
+                  "runs": 103
+                },
+                "player_of_match": [
+                  "SV Samson"
+                ]
+              },
+              "scorecard": [
+                {
+                  "team": "Chennai Super Kings",
+                  "total_runs": 207,
+                  "wickets_lost": 6,
+                  "overs_batted": "20.0",
+                  "over_runs": [
+                    7,
+                    19,
+                    6,
+                    19,
+                    13,
+                    9,
+                    10,
+                    8,
+                    5,
+                    15,
+                    11,
+                    6,
+                    3,
+                    14,
+                    4,
+                    15,
+                    2,
+                    15,
+                    10,
+                    16
+                  ],
+                  "powerplay_runs": 73,
+                  "death_overs_runs": 58,
+                  "top_batters": [
+                    {
+                      "player": "SV Samson",
+                      "runs": 101
+                    },
+                    {
+                      "player": "RD Gaikwad",
+                      "runs": 22
+                    },
+                    {
+                      "player": "D Brevis",
+                      "runs": 21
+                    },
+                    {
+                      "player": "Kartik Sharma",
+                      "runs": 18
+                    },
+                    {
+                      "player": "J Overton",
+                      "runs": 15
+                    }
+                  ],
+                  "best_bowling_figures": [
+                    {
+                      "player": "AM Ghazanfar",
+                      "runs_conceded": 25,
+                      "wickets": 2
+                    },
+                    {
+                      "player": "Ashwani Kumar",
+                      "runs_conceded": 37,
+                      "wickets": 2
+                    },
+                    {
+                      "player": "JJ Bumrah",
+                      "runs_conceded": 31,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "MJ Santner",
+                      "runs_conceded": 44,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "Krish Bhagat",
+                      "runs_conceded": 31,
+                      "wickets": 0
+                    }
+                  ]
+                },
+                {
+                  "team": "Mumbai Indians",
+                  "total_runs": 104,
+                  "wickets_lost": 10,
+                  "overs_batted": "19.0",
+                  "over_runs": [
+                    7,
+                    4,
+                    0,
+                    6,
+                    7,
+                    5,
+                    1,
+                    16,
+                    10,
+                    13,
+                    9,
+                    7,
+                    2,
+                    3,
+                    4,
+                    5,
+                    1,
+                    2,
+                    2
+                  ],
+                  "powerplay_runs": 29,
+                  "death_overs_runs": 10,
+                  "top_batters": [
+                    {
+                      "player": "Tilak Varma",
+                      "runs": 37
+                    },
+                    {
+                      "player": "SA Yadav",
+                      "runs": 36
+                    },
+                    {
+                      "player": "Krish Bhagat",
+                      "runs": 7
+                    },
+                    {
+                      "player": "Q de Kock",
+                      "runs": 7
+                    },
+                    {
+                      "player": "SN Thakur",
+                      "runs": 6
+                    }
+                  ],
+                  "best_bowling_figures": [
+                    {
+                      "player": "AJ Hosein",
+                      "runs_conceded": 17,
+                      "wickets": 4
+                    },
+                    {
+                      "player": "Noor Ahmad",
+                      "runs_conceded": 24,
+                      "wickets": 2
+                    },
+                    {
+                      "player": "Gurjapneet Singh",
+                      "runs_conceded": 7,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "A Kamboj",
+                      "runs_conceded": 10,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "J Overton",
+                      "runs_conceded": 14,
+                      "wickets": 1
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-05",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "model_call",
+        "payload": {
+          "text": "the match result field explicitly states that the chennai super kings won the match. answer chennai super kings",
+          "model": "gemini/gemini-3.1-flash-lite"
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-05",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "action",
+        "payload": {
+          "action": "the match result field explicitly states that the chennai super kings won the match. answer chennai super kings"
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-05",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "step_result",
+        "payload": {
+          "reward": 1.0,
+          "terminated": true,
+          "truncated": false,
+          "info": {
+            "correct": "True",
+            "partial_credit": "1.0",
+            "expected_answer": "Chennai Super Kings",
+            "normalized_expected": "chennai super kings",
+            "given_answer": "the match result field explicitly states that the chennai super kings won the match. answer chennai super kings",
+            "match_id": "1529276",
+            "task_type": "winner"
+          },
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-05",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "episode_end",
+        "payload": {
+          "total_reward": 1.0,
+          "steps": 1
+        }
+      }
+    ],
+    "3266aeb0-947f-40bd-a200-44cf2029493e-episode-06": [
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-06",
+        "step": 0,
+        "timestamp": null,
+        "event_type": "episode_start",
+        "payload": {
+          "seed": 6
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-06",
+        "step": 0,
+        "timestamp": null,
+        "event_type": "observation",
+        "payload": {
+          "phase": "start",
+          "data": {
+            "source": {
+              "license_note": "Cricsheet publishes freely available ball-by-ball cricket data; this file stores compact derived scorecard summaries for benchmark episodes.",
+              "name": "Cricsheet Indian Premier League JSON data",
+              "retrieved_utc": "2026-05-29",
+              "url": "https://cricsheet.org/downloads/ipl_json.zip"
+            },
+            "seed": 6,
+            "instructions": "Answer the question using the supplied IPL scorecard. Reply with only the requested value, or JSON like {\"answer\": \"...\"}.",
+            "question": "What was the victory margin? Answer like '35 runs' or '7 wickets'.",
+            "match": {
+              "match_id": "1527692",
+              "date": "2026-04-12",
+              "season": "2026",
+              "event": "Indian Premier League",
+              "match_number": 19,
+              "city": "Lucknow",
+              "venue": "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow",
+              "teams": [
+                "Lucknow Super Giants",
+                "Gujarat Titans"
+              ],
+              "toss": {
+                "decision": "field",
+                "winner": "Gujarat Titans"
+              },
+              "result": {
+                "winner": "Gujarat Titans",
+                "by": {
+                  "wickets": 7
+                },
+                "player_of_match": [
+                  "M Prasidh Krishna"
+                ]
+              },
+              "scorecard": [
+                {
+                  "team": "Lucknow Super Giants",
+                  "total_runs": 164,
+                  "wickets_lost": 8,
+                  "overs_batted": "20.0",
+                  "over_runs": [
+                    4,
+                    19,
+                    7,
+                    15,
+                    3,
+                    12,
+                    9,
+                    5,
+                    3,
+                    3,
+                    3,
+                    4,
+                    9,
+                    13,
+                    1,
+                    7,
+                    3,
+                    11,
+                    15,
+                    18
+                  ],
+                  "powerplay_runs": 60,
+                  "death_overs_runs": 54,
+                  "top_batters": [
+                    {
+                      "player": "AK Markram",
+                      "runs": 30
+                    },
+                    {
+                      "player": "N Pooran",
+                      "runs": 19
+                    },
+                    {
+                      "player": "Abdul Samad",
+                      "runs": 18
+                    },
+                    {
+                      "player": "MD Choudhary",
+                      "runs": 18
+                    },
+                    {
+                      "player": "RR Pant",
+                      "runs": 18
+                    }
+                  ],
+                  "best_bowling_figures": [
+                    {
+                      "player": "M Prasidh Krishna",
+                      "runs_conceded": 28,
+                      "wickets": 4
+                    },
+                    {
+                      "player": "Ashok Sharma",
+                      "runs_conceded": 32,
+                      "wickets": 2
+                    },
+                    {
+                      "player": "Mohammed Siraj",
+                      "runs_conceded": 19,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "K Rabada",
+                      "runs_conceded": 54,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "Rashid Khan",
+                      "runs_conceded": 25,
+                      "wickets": 0
+                    }
+                  ]
+                },
+                {
+                  "team": "Gujarat Titans",
+                  "total_runs": 165,
+                  "wickets_lost": 3,
+                  "overs_batted": "18.4",
+                  "over_runs": [
+                    8,
+                    9,
+                    2,
+                    6,
+                    20,
+                    7,
+                    12,
+                    5,
+                    9,
+                    8,
+                    8,
+                    16,
+                    11,
+                    7,
+                    2,
+                    6,
+                    9,
+                    14,
+                    6
+                  ],
+                  "powerplay_runs": 52,
+                  "death_overs_runs": 35,
+                  "top_batters": [
+                    {
+                      "player": "JC Buttler",
+                      "runs": 60
+                    },
+                    {
+                      "player": "Shubman Gill",
+                      "runs": 56
+                    },
+                    {
+                      "player": "Washington Sundar",
+                      "runs": 21
+                    },
+                    {
+                      "player": "B Sai Sudharsan",
+                      "runs": 15
+                    },
+                    {
+                      "player": "R Tewatia",
+                      "runs": 10
+                    }
+                  ],
+                  "best_bowling_figures": [
+                    {
+                      "player": "DS Rathi",
+                      "runs_conceded": 31,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "Prince Yadav",
+                      "runs_conceded": 31,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "Mohammed Shami",
+                      "runs_conceded": 36,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "AK Markram",
+                      "runs_conceded": 15,
+                      "wickets": 0
+                    },
+                    {
+                      "player": "Avesh Khan",
+                      "runs_conceded": 24,
+                      "wickets": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-06",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "model_call",
+        "payload": {
+          "text": "7 wickets",
+          "model": "gemini/gemini-3.1-flash-lite"
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-06",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "action",
+        "payload": {
+          "action": "7 wickets"
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-06",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "step_result",
+        "payload": {
+          "reward": 1.0,
+          "terminated": true,
+          "truncated": false,
+          "info": {
+            "correct": "True",
+            "partial_credit": "1.0",
+            "expected_answer": "7 wickets",
+            "normalized_expected": "7 wickets",
+            "given_answer": "7 wickets",
+            "match_id": "1527692",
+            "task_type": "margin"
+          },
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-06",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "episode_end",
+        "payload": {
+          "total_reward": 1.0,
+          "steps": 1
+        }
+      }
+    ],
+    "3266aeb0-947f-40bd-a200-44cf2029493e-episode-07": [
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-07",
+        "step": 0,
+        "timestamp": null,
+        "event_type": "episode_start",
+        "payload": {
+          "seed": 11
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-07",
+        "step": 0,
+        "timestamp": null,
+        "event_type": "observation",
+        "payload": {
+          "phase": "start",
+          "data": {
+            "source": {
+              "license_note": "Cricsheet publishes freely available ball-by-ball cricket data; this file stores compact derived scorecard summaries for benchmark episodes.",
+              "name": "Cricsheet Indian Premier League JSON data",
+              "retrieved_utc": "2026-05-29",
+              "url": "https://cricsheet.org/downloads/ipl_json.zip"
+            },
+            "seed": 11,
+            "instructions": "Answer the question using the supplied IPL scorecard. Reply with only the requested value, or JSON like {\"answer\": \"...\"}.",
+            "question": "How many total runs did Gujarat Titans score?",
+            "match": {
+              "match_id": "1529285",
+              "date": "2026-04-30",
+              "season": "2026",
+              "event": "Indian Premier League",
+              "match_number": 42,
+              "city": "Ahmedabad",
+              "venue": "Narendra Modi Stadium, Ahmedabad",
+              "teams": [
+                "Royal Challengers Bengaluru",
+                "Gujarat Titans"
+              ],
+              "toss": {
+                "decision": "field",
+                "winner": "Gujarat Titans"
+              },
+              "result": {
+                "winner": "Gujarat Titans",
+                "by": {
+                  "wickets": 4
+                },
+                "player_of_match": [
+                  "JO Holder"
+                ]
+              },
+              "scorecard": [
+                {
+                  "team": "Royal Challengers Bengaluru",
+                  "total_runs": 155,
+                  "wickets_lost": 10,
+                  "overs_batted": "19.2",
+                  "over_runs": [
+                    6,
+                    21,
+                    7,
+                    5,
+                    14,
+                    6,
+                    12,
+                    9,
+                    9,
+                    2,
+                    6,
+                    3,
+                    13,
+                    13,
+                    6,
+                    1,
+                    3,
+                    7,
+                    12,
+                    0
+                  ],
+                  "powerplay_runs": 59,
+                  "death_overs_runs": 23,
+                  "top_batters": [
+                    {
+                      "player": "D Padikkal",
+                      "runs": 40
+                    },
+                    {
+                      "player": "V Kohli",
+                      "runs": 28
+                    },
+                    {
+                      "player": "RM Patidar",
+                      "runs": 19
+                    },
+                    {
+                      "player": "R Shepherd",
+                      "runs": 17
+                    },
+                    {
+                      "player": "B Kumar",
+                      "runs": 15
+                    }
+                  ],
+                  "best_bowling_figures": [
+                    {
+                      "player": "Arshad Khan",
+                      "runs_conceded": 22,
+                      "wickets": 3
+                    },
+                    {
+                      "player": "Rashid Khan",
+                      "runs_conceded": 19,
+                      "wickets": 2
+                    },
+                    {
+                      "player": "JO Holder",
+                      "runs_conceded": 29,
+                      "wickets": 2
+                    },
+                    {
+                      "player": "Mohammed Siraj",
+                      "runs_conceded": 38,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "K Rabada",
+                      "runs_conceded": 44,
+                      "wickets": 1
+                    }
+                  ]
+                },
+                {
+                  "team": "Gujarat Titans",
+                  "total_runs": 158,
+                  "wickets_lost": 6,
+                  "overs_batted": "15.5",
+                  "over_runs": [
+                    12,
+                    24,
+                    6,
+                    13,
+                    2,
+                    12,
+                    17,
+                    8,
+                    8,
+                    7,
+                    13,
+                    10,
+                    5,
+                    4,
+                    4,
+                    13
+                  ],
+                  "powerplay_runs": 69,
+                  "death_overs_runs": 13,
+                  "top_batters": [
+                    {
+                      "player": "Shubman Gill",
+                      "runs": 43
+                    },
+                    {
+                      "player": "JC Buttler",
+                      "runs": 39
+                    },
+                    {
+                      "player": "R Tewatia",
+                      "runs": 27
+                    },
+                    {
+                      "player": "JO Holder",
+                      "runs": 12
+                    },
+                    {
+                      "player": "Washington Sundar",
+                      "runs": 12
+                    }
+                  ],
+                  "best_bowling_figures": [
+                    {
+                      "player": "B Kumar",
+                      "runs_conceded": 28,
+                      "wickets": 3
+                    },
+                    {
+                      "player": "R Shepherd",
+                      "runs_conceded": 30,
+                      "wickets": 2
+                    },
+                    {
+                      "player": "Suyash Sharma",
+                      "runs_conceded": 44,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "JR Hazlewood",
+                      "runs_conceded": 56,
+                      "wickets": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-07",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "model_call",
+        "payload": {
+          "text": "158",
+          "model": "gemini/gemini-3.1-flash-lite"
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-07",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "action",
+        "payload": {
+          "action": "158"
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-07",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "step_result",
+        "payload": {
+          "reward": 1.0,
+          "terminated": true,
+          "truncated": false,
+          "info": {
+            "correct": "True",
+            "partial_credit": "1.0",
+            "expected_answer": "158",
+            "normalized_expected": "158",
+            "given_answer": "158",
+            "match_id": "1529285",
+            "task_type": "innings_total"
+          },
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-07",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "episode_end",
+        "payload": {
+          "total_reward": 1.0,
+          "steps": 1
+        }
+      }
+    ],
+    "3266aeb0-947f-40bd-a200-44cf2029493e-episode-08": [
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-08",
+        "step": 0,
+        "timestamp": null,
+        "event_type": "episode_start",
+        "payload": {
+          "seed": 12
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-08",
+        "step": 0,
+        "timestamp": null,
+        "event_type": "observation",
+        "payload": {
+          "phase": "start",
+          "data": {
+            "source": {
+              "license_note": "Cricsheet publishes freely available ball-by-ball cricket data; this file stores compact derived scorecard summaries for benchmark episodes.",
+              "name": "Cricsheet Indian Premier League JSON data",
+              "retrieved_utc": "2026-05-29",
+              "url": "https://cricsheet.org/downloads/ipl_json.zip"
+            },
+            "seed": 12,
+            "instructions": "Answer the question using the supplied IPL scorecard. Reply with only the requested value, or JSON like {\"answer\": \"...\"}.",
+            "question": "Which team scored more runs in the first six overs, and by how many?",
+            "match": {
+              "match_id": "1529283",
+              "date": "2026-04-28",
+              "season": "2026",
+              "event": "Indian Premier League",
+              "match_number": 40,
+              "city": "New Chandigarh",
+              "venue": "Maharaja Yadavindra Singh International Cricket Stadium, New Chandigarh",
+              "teams": [
+                "Punjab Kings",
+                "Rajasthan Royals"
+              ],
+              "toss": {
+                "decision": "field",
+                "winner": "Rajasthan Royals"
+              },
+              "result": {
+                "winner": "Rajasthan Royals",
+                "by": {
+                  "wickets": 6
+                },
+                "player_of_match": [
+                  "D Ferreira"
+                ]
+              },
+              "scorecard": [
+                {
+                  "team": "Punjab Kings",
+                  "total_runs": 222,
+                  "wickets_lost": 4,
+                  "overs_batted": "20.0",
+                  "over_runs": [
+                    8,
+                    21,
+                    8,
+                    11,
+                    4,
+                    13,
+                    15,
+                    15,
+                    6,
+                    6,
+                    11,
+                    9,
+                    7,
+                    10,
+                    6,
+                    10,
+                    7,
+                    14,
+                    17,
+                    24
+                  ],
+                  "powerplay_runs": 65,
+                  "death_overs_runs": 72,
+                  "top_batters": [
+                    {
+                      "player": "MP Stoinis",
+                      "runs": 62
+                    },
+                    {
+                      "player": "P Simran Singh",
+                      "runs": 59
+                    },
+                    {
+                      "player": "C Connolly",
+                      "runs": 30
+                    },
+                    {
+                      "player": "SS Iyer",
+                      "runs": 30
+                    },
+                    {
+                      "player": "Priyansh Arya",
+                      "runs": 29
+                    }
+                  ],
+                  "best_bowling_figures": [
+                    {
+                      "player": "Yash Raj Punja",
+                      "runs_conceded": 41,
+                      "wickets": 2
+                    },
+                    {
+                      "player": "JC Archer",
+                      "runs_conceded": 40,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "N Burger",
+                      "runs_conceded": 59,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "RA Jadeja",
+                      "runs_conceded": 32,
+                      "wickets": 0
+                    },
+                    {
+                      "player": "Brijesh Sharma",
+                      "runs_conceded": 42,
+                      "wickets": 0
+                    }
+                  ]
+                },
+                {
+                  "team": "Rajasthan Royals",
+                  "total_runs": 228,
+                  "wickets_lost": 4,
+                  "overs_batted": "19.2",
+                  "over_runs": [
+                    15,
+                    17,
+                    12,
+                    22,
+                    2,
+                    16,
+                    6,
+                    5,
+                    8,
+                    6,
+                    9,
+                    13,
+                    8,
+                    12,
+                    14,
+                    15,
+                    8,
+                    17,
+                    16,
+                    7
+                  ],
+                  "powerplay_runs": 84,
+                  "death_overs_runs": 63,
+                  "top_batters": [
+                    {
+                      "player": "D Ferreira",
+                      "runs": 52
+                    },
+                    {
+                      "player": "YBK Jaiswal",
+                      "runs": 51
+                    },
+                    {
+                      "player": "V Suryavanshi",
+                      "runs": 43
+                    },
+                    {
+                      "player": "SB Dubey",
+                      "runs": 31
+                    },
+                    {
+                      "player": "R Parag",
+                      "runs": 29
+                    }
+                  ],
+                  "best_bowling_figures": [
+                    {
+                      "player": "YS Chahal",
+                      "runs_conceded": 36,
+                      "wickets": 3
+                    },
+                    {
+                      "player": "Arshdeep Singh",
+                      "runs_conceded": 68,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "Harpreet Brar",
+                      "runs_conceded": 25,
+                      "wickets": 0
+                    },
+                    {
+                      "player": "M Jansen",
+                      "runs_conceded": 41,
+                      "wickets": 0
+                    },
+                    {
+                      "player": "LH Ferguson",
+                      "runs_conceded": 57,
+                      "wickets": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-08",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "model_call",
+        "payload": {
+          "text": "rajasthan royals scored 84 runs in the powerplay and punjab kings scored 65 runs meaning rajasthan royals scored 19 more runs. answer rajasthan royals 19",
+          "model": "gemini/gemini-3.1-flash-lite"
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-08",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "action",
+        "payload": {
+          "action": "rajasthan royals scored 84 runs in the powerplay and punjab kings scored 65 runs meaning rajasthan royals scored 19 more runs. answer rajasthan royals 19"
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-08",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "step_result",
+        "payload": {
+          "reward": 0.5,
+          "terminated": true,
+          "truncated": false,
+          "info": {
+            "correct": "False",
+            "partial_credit": "0.5",
+            "expected_answer": "Rajasthan Royals by 19 runs",
+            "normalized_expected": "rajasthan royals by 19 runs",
+            "given_answer": "rajasthan royals scored 84 runs in the powerplay and punjab kings scored 65 runs meaning rajasthan royals scored 19 more runs. answer rajasthan royals 19",
+            "match_id": "1529283",
+            "task_type": "powerplay"
+          },
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-08",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "episode_end",
+        "payload": {
+          "total_reward": 0.5,
+          "steps": 1
+        }
+      }
+    ],
+    "3266aeb0-947f-40bd-a200-44cf2029493e-episode-09": [
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-09",
+        "step": 0,
+        "timestamp": null,
+        "event_type": "episode_start",
+        "payload": {
+          "seed": 7
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-09",
+        "step": 0,
+        "timestamp": null,
+        "event_type": "observation",
+        "payload": {
+          "phase": "start",
+          "data": {
+            "source": {
+              "license_note": "Cricsheet publishes freely available ball-by-ball cricket data; this file stores compact derived scorecard summaries for benchmark episodes.",
+              "name": "Cricsheet Indian Premier League JSON data",
+              "retrieved_utc": "2026-05-29",
+              "url": "https://cricsheet.org/downloads/ipl_json.zip"
+            },
+            "seed": 7,
+            "instructions": "Answer the question using the supplied IPL scorecard. Reply with only the requested value, or JSON like {\"answer\": \"...\"}.",
+            "question": "Who was named player of the match?",
+            "match": {
+              "match_id": "1529293",
+              "date": "2026-05-07",
+              "season": "2026",
+              "event": "Indian Premier League",
+              "match_number": 50,
+              "city": "Lucknow",
+              "venue": "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow",
+              "teams": [
+                "Lucknow Super Giants",
+                "Royal Challengers Bengaluru"
+              ],
+              "toss": {
+                "decision": "field",
+                "winner": "Royal Challengers Bengaluru"
+              },
+              "result": {
+                "winner": "Lucknow Super Giants",
+                "by": {
+                  "runs": 9
+                },
+                "player_of_match": [
+                  "MR Marsh"
+                ]
+              },
+              "scorecard": [
+                {
+                  "team": "Lucknow Super Giants",
+                  "total_runs": 209,
+                  "wickets_lost": 3,
+                  "overs_batted": "19.0",
+                  "over_runs": [
+                    5,
+                    13,
+                    9,
+                    12,
+                    17,
+                    12,
+                    12,
+                    6,
+                    9,
+                    3,
+                    11,
+                    6,
+                    10,
+                    20,
+                    10,
+                    10,
+                    18,
+                    10,
+                    16
+                  ],
+                  "powerplay_runs": 68,
+                  "death_overs_runs": 54,
+                  "top_batters": [
+                    {
+                      "player": "MR Marsh",
+                      "runs": 111
+                    },
+                    {
+                      "player": "N Pooran",
+                      "runs": 38
+                    },
+                    {
+                      "player": "RR Pant",
+                      "runs": 32
+                    },
+                    {
+                      "player": "AA Kulkarni",
+                      "runs": 17
+                    },
+                    {
+                      "player": "AK Markram",
+                      "runs": 1
+                    }
+                  ],
+                  "best_bowling_figures": [
+                    {
+                      "player": "KH Pandya",
+                      "runs_conceded": 31,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "JR Hazlewood",
+                      "runs_conceded": 49,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "Rasikh Salam",
+                      "runs_conceded": 53,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "R Shepherd",
+                      "runs_conceded": 16,
+                      "wickets": 0
+                    },
+                    {
+                      "player": "Suyash Sharma",
+                      "runs_conceded": 21,
+                      "wickets": 0
+                    }
+                  ]
+                },
+                {
+                  "team": "Royal Challengers Bengaluru",
+                  "total_runs": 203,
+                  "wickets_lost": 6,
+                  "overs_batted": "19.0",
+                  "over_runs": [
+                    9,
+                    8,
+                    3,
+                    6,
+                    9,
+                    10,
+                    15,
+                    9,
+                    17,
+                    18,
+                    3,
+                    6,
+                    9,
+                    11,
+                    17,
+                    16,
+                    14,
+                    13,
+                    10
+                  ],
+                  "powerplay_runs": 45,
+                  "death_overs_runs": 53,
+                  "top_batters": [
+                    {
+                      "player": "RM Patidar",
+                      "runs": 61
+                    },
+                    {
+                      "player": "TH David",
+                      "runs": 40
+                    },
+                    {
+                      "player": "D Padikkal",
+                      "runs": 34
+                    },
+                    {
+                      "player": "KH Pandya",
+                      "runs": 28
+                    },
+                    {
+                      "player": "R Shepherd",
+                      "runs": 23
+                    }
+                  ],
+                  "best_bowling_figures": [
+                    {
+                      "player": "Prince Yadav",
+                      "runs_conceded": 33,
+                      "wickets": 3
+                    },
+                    {
+                      "player": "Shahbaz Ahmed",
+                      "runs_conceded": 33,
+                      "wickets": 2
+                    },
+                    {
+                      "player": "Mohammed Shami",
+                      "runs_conceded": 33,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "DS Rathi",
+                      "runs_conceded": 50,
+                      "wickets": 0
+                    },
+                    {
+                      "player": "MP Yadav",
+                      "runs_conceded": 50,
+                      "wickets": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-09",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "model_call",
+        "payload": {
+          "text": "mr marsh",
+          "model": "gemini/gemini-3.1-flash-lite"
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-09",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "action",
+        "payload": {
+          "action": "mr marsh"
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-09",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "step_result",
+        "payload": {
+          "reward": 1.0,
+          "terminated": true,
+          "truncated": false,
+          "info": {
+            "correct": "True",
+            "partial_credit": "1.0",
+            "expected_answer": "MR Marsh",
+            "normalized_expected": "mr marsh",
+            "given_answer": "mr marsh",
+            "match_id": "1529293",
+            "task_type": "player_of_match"
+          },
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-09",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "episode_end",
+        "payload": {
+          "total_reward": 1.0,
+          "steps": 1
+        }
+      }
+    ],
+    "3266aeb0-947f-40bd-a200-44cf2029493e-episode-10": [
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-10",
+        "step": 0,
+        "timestamp": null,
+        "event_type": "episode_start",
+        "payload": {
+          "seed": 8
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-10",
+        "step": 0,
+        "timestamp": null,
+        "event_type": "observation",
+        "payload": {
+          "phase": "start",
+          "data": {
+            "source": {
+              "license_note": "Cricsheet publishes freely available ball-by-ball cricket data; this file stores compact derived scorecard summaries for benchmark episodes.",
+              "name": "Cricsheet Indian Premier League JSON data",
+              "retrieved_utc": "2026-05-29",
+              "url": "https://cricsheet.org/downloads/ipl_json.zip"
+            },
+            "seed": 8,
+            "instructions": "Answer the question using the supplied IPL scorecard. Reply with only the requested value, or JSON like {\"answer\": \"...\"}.",
+            "question": "How many runs did Sunrisers Hyderabad score from overs 16 through 20?",
+            "match": {
+              "match_id": "1529299",
+              "date": "2026-05-12",
+              "season": "2026",
+              "event": "Indian Premier League",
+              "match_number": 56,
+              "city": "Ahmedabad",
+              "venue": "Narendra Modi Stadium, Ahmedabad",
+              "teams": [
+                "Gujarat Titans",
+                "Sunrisers Hyderabad"
+              ],
+              "toss": {
+                "decision": "field",
+                "winner": "Sunrisers Hyderabad"
+              },
+              "result": {
+                "winner": "Gujarat Titans",
+                "by": {
+                  "runs": 82
+                },
+                "player_of_match": [
+                  "K Rabada"
+                ]
+              },
+              "scorecard": [
+                {
+                  "team": "Gujarat Titans",
+                  "total_runs": 168,
+                  "wickets_lost": 5,
+                  "overs_batted": "20.0",
+                  "over_runs": [
+                    5,
+                    10,
+                    2,
+                    4,
+                    5,
+                    8,
+                    13,
+                    9,
+                    7,
+                    5,
+                    10,
+                    6,
+                    10,
+                    13,
+                    7,
+                    9,
+                    10,
+                    7,
+                    18,
+                    10
+                  ],
+                  "powerplay_runs": 34,
+                  "death_overs_runs": 54,
+                  "top_batters": [
+                    {
+                      "player": "B Sai Sudharsan",
+                      "runs": 61
+                    },
+                    {
+                      "player": "Washington Sundar",
+                      "runs": 50
+                    },
+                    {
+                      "player": "N Sindhu",
+                      "runs": 22
+                    },
+                    {
+                      "player": "JO Holder",
+                      "runs": 11
+                    },
+                    {
+                      "player": "JC Buttler",
+                      "runs": 7
+                    }
+                  ],
+                  "best_bowling_figures": [
+                    {
+                      "player": "PP Hinge",
+                      "runs_conceded": 17,
+                      "wickets": 2
+                    },
+                    {
+                      "player": "Sakib Hussain",
+                      "runs_conceded": 37,
+                      "wickets": 2
+                    },
+                    {
+                      "player": "PJ Cummins",
+                      "runs_conceded": 20,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "Shivang Kumar",
+                      "runs_conceded": 19,
+                      "wickets": 0
+                    },
+                    {
+                      "player": "Nithish Kumar Reddy",
+                      "runs_conceded": 27,
+                      "wickets": 0
+                    }
+                  ]
+                },
+                {
+                  "team": "Sunrisers Hyderabad",
+                  "total_runs": 86,
+                  "wickets_lost": 10,
+                  "overs_batted": "14.5",
+                  "over_runs": [
+                    0,
+                    13,
+                    10,
+                    6,
+                    1,
+                    4,
+                    9,
+                    5,
+                    6,
+                    2,
+                    4,
+                    11,
+                    1,
+                    10,
+                    4
+                  ],
+                  "powerplay_runs": 34,
+                  "death_overs_runs": 0,
+                  "top_batters": [
+                    {
+                      "player": "PJ Cummins",
+                      "runs": 19
+                    },
+                    {
+                      "player": "S Arora",
+                      "runs": 16
+                    },
+                    {
+                      "player": "H Klaasen",
+                      "runs": 14
+                    },
+                    {
+                      "player": "Ishan Kishan",
+                      "runs": 11
+                    },
+                    {
+                      "player": "R Smaran",
+                      "runs": 9
+                    }
+                  ],
+                  "best_bowling_figures": [
+                    {
+                      "player": "JO Holder",
+                      "runs_conceded": 20,
+                      "wickets": 3
+                    },
+                    {
+                      "player": "K Rabada",
+                      "runs_conceded": 28,
+                      "wickets": 3
+                    },
+                    {
+                      "player": "M Prasidh Krishna",
+                      "runs_conceded": 23,
+                      "wickets": 2
+                    },
+                    {
+                      "player": "Rashid Khan",
+                      "runs_conceded": 3,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "Mohammed Siraj",
+                      "runs_conceded": 11,
+                      "wickets": 1
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-10",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "model_call",
+        "payload": {
+          "text": "sunrisers hyderabad were bowled out in 14.5 overs meaning they did not face any deliveries in the 16th through 20th overs. answer 0",
+          "model": "gemini/gemini-3.1-flash-lite"
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-10",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "action",
+        "payload": {
+          "action": "sunrisers hyderabad were bowled out in 14.5 overs meaning they did not face any deliveries in the 16th through 20th overs. answer 0"
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-10",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "step_result",
+        "payload": {
+          "reward": 1.0,
+          "terminated": true,
+          "truncated": false,
+          "info": {
+            "correct": "True",
+            "partial_credit": "1.0",
+            "expected_answer": "0",
+            "normalized_expected": "0",
+            "given_answer": "sunrisers hyderabad were bowled out in 14.5 overs meaning they did not face any deliveries in the 16th through 20th overs. answer 0",
+            "match_id": "1529299",
+            "task_type": "death_overs"
+          },
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-10",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "episode_end",
+        "payload": {
+          "total_reward": 1.0,
+          "steps": 1
+        }
+      }
+    ],
+    "3266aeb0-947f-40bd-a200-44cf2029493e-episode-11": [
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-11",
+        "step": 0,
+        "timestamp": null,
+        "event_type": "episode_start",
+        "payload": {
+          "seed": 2
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-11",
+        "step": 0,
+        "timestamp": null,
+        "event_type": "observation",
+        "payload": {
+          "phase": "start",
+          "data": {
+            "source": {
+              "license_note": "Cricsheet publishes freely available ball-by-ball cricket data; this file stores compact derived scorecard summaries for benchmark episodes.",
+              "name": "Cricsheet Indian Premier League JSON data",
+              "retrieved_utc": "2026-05-29",
+              "url": "https://cricsheet.org/downloads/ipl_json.zip"
+            },
+            "seed": 2,
+            "instructions": "Answer the question using the supplied IPL scorecard. Reply with only the requested value, or JSON like {\"answer\": \"...\"}.",
+            "question": "Which team won this IPL match?",
+            "match": {
+              "match_id": "1527687",
+              "date": "2026-04-08",
+              "season": "2026",
+              "event": "Indian Premier League",
+              "match_number": 14,
+              "city": "Delhi",
+              "venue": "Arun Jaitley Stadium, Delhi",
+              "teams": [
+                "Gujarat Titans",
+                "Delhi Capitals"
+              ],
+              "toss": {
+                "decision": "field",
+                "winner": "Delhi Capitals"
+              },
+              "result": {
+                "winner": "Gujarat Titans",
+                "by": {
+                  "runs": 1
+                },
+                "player_of_match": [
+                  "Rashid Khan"
+                ]
+              },
+              "scorecard": [
+                {
+                  "team": "Gujarat Titans",
+                  "total_runs": 210,
+                  "wickets_lost": 4,
+                  "overs_batted": "20.0",
+                  "over_runs": [
+                    11,
+                    7,
+                    9,
+                    13,
+                    23,
+                    5,
+                    9,
+                    8,
+                    5,
+                    11,
+                    9,
+                    23,
+                    9,
+                    10,
+                    9,
+                    7,
+                    14,
+                    3,
+                    13,
+                    12
+                  ],
+                  "powerplay_runs": 68,
+                  "death_overs_runs": 49,
+                  "top_batters": [
+                    {
+                      "player": "Shubman Gill",
+                      "runs": 70
+                    },
+                    {
+                      "player": "Washington Sundar",
+                      "runs": 55
+                    },
+                    {
+                      "player": "JC Buttler",
+                      "runs": 52
+                    },
+                    {
+                      "player": "GD Phillips",
+                      "runs": 14
+                    },
+                    {
+                      "player": "B Sai Sudharsan",
+                      "runs": 12
+                    }
+                  ],
+                  "best_bowling_figures": [
+                    {
+                      "player": "Mukesh Kumar",
+                      "runs_conceded": 55,
+                      "wickets": 2
+                    },
+                    {
+                      "player": "L Ngidi",
+                      "runs_conceded": 24,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "Kuldeep Yadav",
+                      "runs_conceded": 42,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "V Nigam",
+                      "runs_conceded": 23,
+                      "wickets": 0
+                    },
+                    {
+                      "player": "AR Patel",
+                      "runs_conceded": 32,
+                      "wickets": 0
+                    }
+                  ]
+                },
+                {
+                  "team": "Delhi Capitals",
+                  "total_runs": 209,
+                  "wickets_lost": 8,
+                  "overs_batted": "20.0",
+                  "over_runs": [
+                    14,
+                    6,
+                    7,
+                    9,
+                    4,
+                    23,
+                    8,
+                    5,
+                    21,
+                    4,
+                    11,
+                    6,
+                    12,
+                    4,
+                    8,
+                    16,
+                    8,
+                    9,
+                    23,
+                    11
+                  ],
+                  "powerplay_runs": 63,
+                  "death_overs_runs": 67,
+                  "top_batters": [
+                    {
+                      "player": "KL Rahul",
+                      "runs": 92
+                    },
+                    {
+                      "player": "DA Miller",
+                      "runs": 41
+                    },
+                    {
+                      "player": "P Nissanka",
+                      "runs": 41
+                    },
+                    {
+                      "player": "V Nigam",
+                      "runs": 12
+                    },
+                    {
+                      "player": "T Stubbs",
+                      "runs": 7
+                    }
+                  ],
+                  "best_bowling_figures": [
+                    {
+                      "player": "Rashid Khan",
+                      "runs_conceded": 17,
+                      "wickets": 3
+                    },
+                    {
+                      "player": "M Prasidh Krishna",
+                      "runs_conceded": 52,
+                      "wickets": 2
+                    },
+                    {
+                      "player": "Mohammed Siraj",
+                      "runs_conceded": 52,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "Washington Sundar",
+                      "runs_conceded": 11,
+                      "wickets": 0
+                    },
+                    {
+                      "player": "K Rabada",
+                      "runs_conceded": 32,
+                      "wickets": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-11",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "model_call",
+        "payload": {
+          "text": "the match result field explicitly states that the gujarat titans won the match by 1 run. answer gujarat titans",
+          "model": "gemini/gemini-3.1-flash-lite"
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-11",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "action",
+        "payload": {
+          "action": "the match result field explicitly states that the gujarat titans won the match by 1 run. answer gujarat titans"
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-11",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "step_result",
+        "payload": {
+          "reward": 1.0,
+          "terminated": true,
+          "truncated": false,
+          "info": {
+            "correct": "True",
+            "partial_credit": "1.0",
+            "expected_answer": "Gujarat Titans",
+            "normalized_expected": "gujarat titans",
+            "given_answer": "the match result field explicitly states that the gujarat titans won the match by 1 run. answer gujarat titans",
+            "match_id": "1527687",
+            "task_type": "winner"
+          },
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-11",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "episode_end",
+        "payload": {
+          "total_reward": 1.0,
+          "steps": 1
+        }
+      }
+    ],
+    "3266aeb0-947f-40bd-a200-44cf2029493e-episode-12": [
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-12",
+        "step": 0,
+        "timestamp": null,
+        "event_type": "episode_start",
+        "payload": {
+          "seed": 16
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-12",
+        "step": 0,
+        "timestamp": null,
+        "event_type": "observation",
+        "payload": {
+          "phase": "start",
+          "data": {
+            "source": {
+              "license_note": "Cricsheet publishes freely available ball-by-ball cricket data; this file stores compact derived scorecard summaries for benchmark episodes.",
+              "name": "Cricsheet Indian Premier League JSON data",
+              "retrieved_utc": "2026-05-29",
+              "url": "https://cricsheet.org/downloads/ipl_json.zip"
+            },
+            "seed": 16,
+            "instructions": "Answer the question using the supplied IPL scorecard. Reply with only the requested value, or JSON like {\"answer\": \"...\"}.",
+            "question": "Which batter made the highest individual score in this match?",
+            "match": {
+              "match_id": "1529290",
+              "date": "2026-05-04",
+              "season": "2026",
+              "event": "Indian Premier League",
+              "match_number": 47,
+              "city": "Mumbai",
+              "venue": "Wankhede Stadium, Mumbai",
+              "teams": [
+                "Lucknow Super Giants",
+                "Mumbai Indians"
+              ],
+              "toss": {
+                "decision": "field",
+                "winner": "Mumbai Indians"
+              },
+              "result": {
+                "winner": "Mumbai Indians",
+                "by": {
+                  "wickets": 6
+                },
+                "player_of_match": [
+                  "RD Rickelton"
+                ]
+              },
+              "scorecard": [
+                {
+                  "team": "Lucknow Super Giants",
+                  "total_runs": 228,
+                  "wickets_lost": 5,
+                  "overs_batted": "20.0",
+                  "over_runs": [
+                    11,
+                    10,
+                    9,
+                    21,
+                    20,
+                    19,
+                    16,
+                    17,
+                    4,
+                    14,
+                    14,
+                    5,
+                    4,
+                    7,
+                    4,
+                    17,
+                    14,
+                    9,
+                    7,
+                    6
+                  ],
+                  "powerplay_runs": 90,
+                  "death_overs_runs": 53,
+                  "top_batters": [
+                    {
+                      "player": "N Pooran",
+                      "runs": 63
+                    },
+                    {
+                      "player": "MR Marsh",
+                      "runs": 44
+                    },
+                    {
+                      "player": "Himmat Singh",
+                      "runs": 40
+                    },
+                    {
+                      "player": "AK Markram",
+                      "runs": 31
+                    },
+                    {
+                      "player": "RR Pant",
+                      "runs": 15
+                    }
+                  ],
+                  "best_bowling_figures": [
+                    {
+                      "player": "C Bosch",
+                      "runs_conceded": 20,
+                      "wickets": 2
+                    },
+                    {
+                      "player": "WG Jacks",
+                      "runs_conceded": 34,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "Raghu Sharma",
+                      "runs_conceded": 36,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "AM Ghazanfar",
+                      "runs_conceded": 50,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "DL Chahar",
+                      "runs_conceded": 43,
+                      "wickets": 0
+                    }
+                  ]
+                },
+                {
+                  "team": "Mumbai Indians",
+                  "total_runs": 229,
+                  "wickets_lost": 4,
+                  "overs_batted": "18.4",
+                  "over_runs": [
+                    10,
+                    11,
+                    14,
+                    9,
+                    6,
+                    21,
+                    16,
+                    11,
+                    23,
+                    6,
+                    17,
+                    14,
+                    14,
+                    5,
+                    10,
+                    3,
+                    12,
+                    16,
+                    11
+                  ],
+                  "powerplay_runs": 71,
+                  "death_overs_runs": 42,
+                  "top_batters": [
+                    {
+                      "player": "RG Sharma",
+                      "runs": 84
+                    },
+                    {
+                      "player": "RD Rickelton",
+                      "runs": 83
+                    },
+                    {
+                      "player": "Naman Dhir",
+                      "runs": 23
+                    },
+                    {
+                      "player": "SA Yadav",
+                      "runs": 12
+                    },
+                    {
+                      "player": "Tilak Varma",
+                      "runs": 11
+                    }
+                  ],
+                  "best_bowling_figures": [
+                    {
+                      "player": "M Siddharth",
+                      "runs_conceded": 47,
+                      "wickets": 2
+                    },
+                    {
+                      "player": "Mohsin Khan",
+                      "runs_conceded": 47,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "Mohammed Shami",
+                      "runs_conceded": 53,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "Prince Yadav",
+                      "runs_conceded": 24,
+                      "wickets": 0
+                    },
+                    {
+                      "player": "Avesh Khan",
+                      "runs_conceded": 56,
+                      "wickets": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-12",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "model_call",
+        "payload": {
+          "text": "comparing the top batters from both teams rg sharma scored 84 runs which is the highest individual score in the match. answer rg sharma",
+          "model": "gemini/gemini-3.1-flash-lite"
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-12",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "action",
+        "payload": {
+          "action": "comparing the top batters from both teams rg sharma scored 84 runs which is the highest individual score in the match. answer rg sharma"
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-12",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "step_result",
+        "payload": {
+          "reward": 1.0,
+          "terminated": true,
+          "truncated": false,
+          "info": {
+            "correct": "True",
+            "partial_credit": "1.0",
+            "expected_answer": "RG Sharma",
+            "normalized_expected": "rg sharma",
+            "given_answer": "comparing the top batters from both teams rg sharma scored 84 runs which is the highest individual score in the match. answer rg sharma",
+            "match_id": "1529290",
+            "task_type": "highest_scorer"
+          },
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-12",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "episode_end",
+        "payload": {
+          "total_reward": 1.0,
+          "steps": 1
+        }
+      }
+    ],
+    "3266aeb0-947f-40bd-a200-44cf2029493e-episode-13": [
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-13",
+        "step": 0,
+        "timestamp": null,
+        "event_type": "episode_start",
+        "payload": {
+          "seed": 18
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-13",
+        "step": 0,
+        "timestamp": null,
+        "event_type": "observation",
+        "payload": {
+          "phase": "start",
+          "data": {
+            "source": {
+              "license_note": "Cricsheet publishes freely available ball-by-ball cricket data; this file stores compact derived scorecard summaries for benchmark episodes.",
+              "name": "Cricsheet Indian Premier League JSON data",
+              "retrieved_utc": "2026-05-29",
+              "url": "https://cricsheet.org/downloads/ipl_json.zip"
+            },
+            "seed": 18,
+            "instructions": "Answer the question using the supplied IPL scorecard. Reply with only the requested value, or JSON like {\"answer\": \"...\"}.",
+            "question": "What was the victory margin? Answer like '35 runs' or '7 wickets'.",
+            "match": {
+              "match_id": "1529302",
+              "date": "2026-05-15",
+              "season": "2026",
+              "event": "Indian Premier League",
+              "match_number": 59,
+              "city": "Lucknow",
+              "venue": "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow",
+              "teams": [
+                "Chennai Super Kings",
+                "Lucknow Super Giants"
+              ],
+              "toss": {
+                "decision": "field",
+                "winner": "Lucknow Super Giants"
+              },
+              "result": {
+                "winner": "Lucknow Super Giants",
+                "by": {
+                  "wickets": 7
+                },
+                "player_of_match": [
+                  "MR Marsh"
+                ]
+              },
+              "scorecard": [
+                {
+                  "team": "Chennai Super Kings",
+                  "total_runs": 187,
+                  "wickets_lost": 5,
+                  "overs_batted": "20.0",
+                  "over_runs": [
+                    13,
+                    7,
+                    5,
+                    6,
+                    3,
+                    3,
+                    14,
+                    10,
+                    8,
+                    2,
+                    15,
+                    6,
+                    16,
+                    7,
+                    12,
+                    15,
+                    7,
+                    4,
+                    11,
+                    23
+                  ],
+                  "powerplay_runs": 37,
+                  "death_overs_runs": 60,
+                  "top_batters": [
+                    {
+                      "player": "Kartik Sharma",
+                      "runs": 71
+                    },
+                    {
+                      "player": "S Dube",
+                      "runs": 32
+                    },
+                    {
+                      "player": "D Brevis",
+                      "runs": 25
+                    },
+                    {
+                      "player": "SV Samson",
+                      "runs": 20
+                    },
+                    {
+                      "player": "PR Veer",
+                      "runs": 13
+                    }
+                  ],
+                  "best_bowling_figures": [
+                    {
+                      "player": "Akash Singh",
+                      "runs_conceded": 26,
+                      "wickets": 3
+                    },
+                    {
+                      "player": "Mohammed Shami",
+                      "runs_conceded": 41,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "Shahbaz Ahmed",
+                      "runs_conceded": 45,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "MP Yadav",
+                      "runs_conceded": 26,
+                      "wickets": 0
+                    },
+                    {
+                      "player": "Prince Yadav",
+                      "runs_conceded": 49,
+                      "wickets": 0
+                    }
+                  ]
+                },
+                {
+                  "team": "Lucknow Super Giants",
+                  "total_runs": 188,
+                  "wickets_lost": 3,
+                  "overs_batted": "16.4",
+                  "over_runs": [
+                    15,
+                    5,
+                    11,
+                    8,
+                    28,
+                    19,
+                    9,
+                    14,
+                    5,
+                    10,
+                    5,
+                    7,
+                    2,
+                    8,
+                    10,
+                    8,
+                    24
+                  ],
+                  "powerplay_runs": 86,
+                  "death_overs_runs": 32,
+                  "top_batters": [
+                    {
+                      "player": "MR Marsh",
+                      "runs": 90
+                    },
+                    {
+                      "player": "JP Inglis",
+                      "runs": 36
+                    },
+                    {
+                      "player": "N Pooran",
+                      "runs": 32
+                    },
+                    {
+                      "player": "MD Choudhary",
+                      "runs": 13
+                    },
+                    {
+                      "player": "Abdul Samad",
+                      "runs": 7
+                    }
+                  ],
+                  "best_bowling_figures": [
+                    {
+                      "player": "Mukesh Choudhary",
+                      "runs_conceded": 24,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "SH Johnson",
+                      "runs_conceded": 39,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "Noor Ahmad",
+                      "runs_conceded": 21,
+                      "wickets": 0
+                    },
+                    {
+                      "player": "Gurjapneet Singh",
+                      "runs_conceded": 34,
+                      "wickets": 0
+                    },
+                    {
+                      "player": "A Kamboj",
+                      "runs_conceded": 63,
+                      "wickets": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-13",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "model_call",
+        "payload": {
+          "text": "the victory margin is explicitly stated in the match result field as 7 wickets. answer 7 wickets",
+          "model": "gemini/gemini-3.1-flash-lite"
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-13",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "action",
+        "payload": {
+          "action": "the victory margin is explicitly stated in the match result field as 7 wickets. answer 7 wickets"
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-13",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "step_result",
+        "payload": {
+          "reward": 1.0,
+          "terminated": true,
+          "truncated": false,
+          "info": {
+            "correct": "True",
+            "partial_credit": "1.0",
+            "expected_answer": "7 wickets",
+            "normalized_expected": "7 wickets",
+            "given_answer": "the victory margin is explicitly stated in the match result field as 7 wickets. answer 7 wickets",
+            "match_id": "1529302",
+            "task_type": "margin"
+          },
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-13",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "episode_end",
+        "payload": {
+          "total_reward": 1.0,
+          "steps": 1
+        }
+      }
+    ],
+    "3266aeb0-947f-40bd-a200-44cf2029493e-episode-14": [
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-14",
+        "step": 0,
+        "timestamp": null,
+        "event_type": "episode_start",
+        "payload": {
+          "seed": 4
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-14",
+        "step": 0,
+        "timestamp": null,
+        "event_type": "observation",
+        "payload": {
+          "phase": "start",
+          "data": {
+            "source": {
+              "license_note": "Cricsheet publishes freely available ball-by-ball cricket data; this file stores compact derived scorecard summaries for benchmark episodes.",
+              "name": "Cricsheet Indian Premier League JSON data",
+              "retrieved_utc": "2026-05-29",
+              "url": "https://cricsheet.org/downloads/ipl_json.zip"
+            },
+            "seed": 4,
+            "instructions": "Answer the question using the supplied IPL scorecard. Reply with only the requested value, or JSON like {\"answer\": \"...\"}.",
+            "question": "Which team scored more runs in the first six overs, and by how many?",
+            "match": {
+              "match_id": "1529298",
+              "date": "2026-05-11",
+              "season": "2026",
+              "event": "Indian Premier League",
+              "match_number": 55,
+              "city": "Dharamsala",
+              "venue": "Himachal Pradesh Cricket Association Stadium, Dharamsala",
+              "teams": [
+                "Punjab Kings",
+                "Delhi Capitals"
+              ],
+              "toss": {
+                "decision": "field",
+                "winner": "Delhi Capitals"
+              },
+              "result": {
+                "winner": "Delhi Capitals",
+                "by": {
+                  "wickets": 3
+                },
+                "player_of_match": [
+                  "M Tiwari"
+                ]
+              },
+              "scorecard": [
+                {
+                  "team": "Punjab Kings",
+                  "total_runs": 210,
+                  "wickets_lost": 5,
+                  "overs_batted": "20.0",
+                  "over_runs": [
+                    22,
+                    12,
+                    17,
+                    8,
+                    11,
+                    2,
+                    6,
+                    10,
+                    9,
+                    10,
+                    9,
+                    9,
+                    8,
+                    7,
+                    9,
+                    13,
+                    6,
+                    19,
+                    16,
+                    7
+                  ],
+                  "powerplay_runs": 72,
+                  "death_overs_runs": 61,
+                  "top_batters": [
+                    {
+                      "player": "SS Iyer",
+                      "runs": 59
+                    },
+                    {
+                      "player": "Priyansh Arya",
+                      "runs": 56
+                    },
+                    {
+                      "player": "C Connolly",
+                      "runs": 38
+                    },
+                    {
+                      "player": "Suryansh Shedge",
+                      "runs": 21
+                    },
+                    {
+                      "player": "P Simran Singh",
+                      "runs": 18
+                    }
+                  ],
+                  "best_bowling_figures": [
+                    {
+                      "player": "M Tiwari",
+                      "runs_conceded": 40,
+                      "wickets": 2
+                    },
+                    {
+                      "player": "MA Starc",
+                      "runs_conceded": 57,
+                      "wickets": 2
+                    },
+                    {
+                      "player": "Mukesh Kumar",
+                      "runs_conceded": 31,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "Auqib Nabi",
+                      "runs_conceded": 32,
+                      "wickets": 0
+                    },
+                    {
+                      "player": "L Ngidi",
+                      "runs_conceded": 46,
+                      "wickets": 0
+                    }
+                  ]
+                },
+                {
+                  "team": "Delhi Capitals",
+                  "total_runs": 216,
+                  "wickets_lost": 7,
+                  "overs_batted": "19.0",
+                  "over_runs": [
+                    6,
+                    4,
+                    4,
+                    18,
+                    6,
+                    9,
+                    16,
+                    10,
+                    3,
+                    11,
+                    11,
+                    15,
+                    11,
+                    14,
+                    5,
+                    15,
+                    17,
+                    19,
+                    22
+                  ],
+                  "powerplay_runs": 47,
+                  "death_overs_runs": 73,
+                  "top_batters": [
+                    {
+                      "player": "AR Patel",
+                      "runs": 56
+                    },
+                    {
+                      "player": "DA Miller",
+                      "runs": 51
+                    },
+                    {
+                      "player": "Ashutosh Sharma",
+                      "runs": 24
+                    },
+                    {
+                      "player": "M Tiwari",
+                      "runs": 18
+                    },
+                    {
+                      "player": "SU Parakh",
+                      "runs": 13
+                    }
+                  ],
+                  "best_bowling_figures": [
+                    {
+                      "player": "Arshdeep Singh",
+                      "runs_conceded": 21,
+                      "wickets": 2
+                    },
+                    {
+                      "player": "Yash Thakur",
+                      "runs_conceded": 55,
+                      "wickets": 2
+                    },
+                    {
+                      "player": "MP Stoinis",
+                      "runs_conceded": 44,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "BJ Dwarshuis",
+                      "runs_conceded": 51,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "M Jansen",
+                      "runs_conceded": 45,
+                      "wickets": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-14",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "model_call",
+        "payload": {
+          "text": "punjab kings scored 72 runs in the powerplay and delhi capitals scored 47 runs meaning punjab kings scored 25 more runs. answer punjab kings 25",
+          "model": "gemini/gemini-3.1-flash-lite"
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-14",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "action",
+        "payload": {
+          "action": "punjab kings scored 72 runs in the powerplay and delhi capitals scored 47 runs meaning punjab kings scored 25 more runs. answer punjab kings 25"
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-14",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "step_result",
+        "payload": {
+          "reward": 0.5,
+          "terminated": true,
+          "truncated": false,
+          "info": {
+            "correct": "False",
+            "partial_credit": "0.5",
+            "expected_answer": "Punjab Kings by 25 runs",
+            "normalized_expected": "punjab kings by 25 runs",
+            "given_answer": "punjab kings scored 72 runs in the powerplay and delhi capitals scored 47 runs meaning punjab kings scored 25 more runs. answer punjab kings 25",
+            "match_id": "1529298",
+            "task_type": "powerplay"
+          },
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-14",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "episode_end",
+        "payload": {
+          "total_reward": 0.5,
+          "steps": 1
+        }
+      }
+    ],
+    "3266aeb0-947f-40bd-a200-44cf2029493e-episode-15": [
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-15",
+        "step": 0,
+        "timestamp": null,
+        "event_type": "episode_start",
+        "payload": {
+          "seed": 14
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-15",
+        "step": 0,
+        "timestamp": null,
+        "event_type": "observation",
+        "payload": {
+          "phase": "start",
+          "data": {
+            "source": {
+              "license_note": "Cricsheet publishes freely available ball-by-ball cricket data; this file stores compact derived scorecard summaries for benchmark episodes.",
+              "name": "Cricsheet Indian Premier League JSON data",
+              "retrieved_utc": "2026-05-29",
+              "url": "https://cricsheet.org/downloads/ipl_json.zip"
+            },
+            "seed": 14,
+            "instructions": "Answer the question using the supplied IPL scorecard. Reply with only the requested value, or JSON like {\"answer\": \"...\"}.",
+            "question": "How many total runs did Lucknow Super Giants score?",
+            "match": {
+              "match_id": "1529307",
+              "date": "2026-05-19",
+              "season": "2026",
+              "event": "Indian Premier League",
+              "match_number": 64,
+              "city": "Jaipur",
+              "venue": "Sawai Mansingh Stadium, Jaipur",
+              "teams": [
+                "Lucknow Super Giants",
+                "Rajasthan Royals"
+              ],
+              "toss": {
+                "decision": "field",
+                "winner": "Rajasthan Royals"
+              },
+              "result": {
+                "winner": "Rajasthan Royals",
+                "by": {
+                  "wickets": 7
+                },
+                "player_of_match": [
+                  "V Suryavanshi"
+                ]
+              },
+              "scorecard": [
+                {
+                  "team": "Lucknow Super Giants",
+                  "total_runs": 220,
+                  "wickets_lost": 5,
+                  "overs_batted": "20.0",
+                  "over_runs": [
+                    12,
+                    13,
+                    13,
+                    16,
+                    14,
+                    15,
+                    12,
+                    10,
+                    11,
+                    11,
+                    10,
+                    12,
+                    7,
+                    4,
+                    5,
+                    17,
+                    12,
+                    10,
+                    11,
+                    5
+                  ],
+                  "powerplay_runs": 83,
+                  "death_overs_runs": 55,
+                  "top_batters": [
+                    {
+                      "player": "MR Marsh",
+                      "runs": 96
+                    },
+                    {
+                      "player": "JP Inglis",
+                      "runs": 60
+                    },
+                    {
+                      "player": "RR Pant",
+                      "runs": 35
+                    },
+                    {
+                      "player": "N Pooran",
+                      "runs": 16
+                    },
+                    {
+                      "player": "A Badoni",
+                      "runs": 0
+                    }
+                  ],
+                  "best_bowling_figures": [
+                    {
+                      "player": "Yash Raj Punja",
+                      "runs_conceded": 35,
+                      "wickets": 2
+                    },
+                    {
+                      "player": "JC Archer",
+                      "runs_conceded": 39,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "MD Shanaka",
+                      "runs_conceded": 10,
+                      "wickets": 0
+                    },
+                    {
+                      "player": "Sandeep Sharma",
+                      "runs_conceded": 43,
+                      "wickets": 0
+                    },
+                    {
+                      "player": "Brijesh Sharma",
+                      "runs_conceded": 44,
+                      "wickets": 0
+                    }
+                  ]
+                },
+                {
+                  "team": "Rajasthan Royals",
+                  "total_runs": 225,
+                  "wickets_lost": 3,
+                  "overs_batted": "19.1",
+                  "over_runs": [
+                    23,
+                    2,
+                    5,
+                    19,
+                    7,
+                    15,
+                    5,
+                    8,
+                    26,
+                    11,
+                    16,
+                    29,
+                    11,
+                    3,
+                    8,
+                    8,
+                    5,
+                    10,
+                    8,
+                    6
+                  ],
+                  "powerplay_runs": 71,
+                  "death_overs_runs": 37,
+                  "top_batters": [
+                    {
+                      "player": "V Suryavanshi",
+                      "runs": 93
+                    },
+                    {
+                      "player": "Dhruv Jurel",
+                      "runs": 53
+                    },
+                    {
+                      "player": "YBK Jaiswal",
+                      "runs": 43
+                    },
+                    {
+                      "player": "D Ferreira",
+                      "runs": 16
+                    },
+                    {
+                      "player": "LG Pretorius",
+                      "runs": 7
+                    }
+                  ],
+                  "best_bowling_figures": [
+                    {
+                      "player": "Mohsin Khan",
+                      "runs_conceded": 31,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "Akash Singh",
+                      "runs_conceded": 54,
+                      "wickets": 1
+                    },
+                    {
+                      "player": "Shahbaz Ahmed",
+                      "runs_conceded": 6,
+                      "wickets": 0
+                    },
+                    {
+                      "player": "DS Rathi",
+                      "runs_conceded": 38,
+                      "wickets": 0
+                    },
+                    {
+                      "player": "Prince Yadav",
+                      "runs_conceded": 43,
+                      "wickets": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "content_type": "application/json",
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-15",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "model_call",
+        "payload": {
+          "text": "220",
+          "model": "gemini/gemini-3.1-flash-lite"
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-15",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "action",
+        "payload": {
+          "action": "220"
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-15",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "step_result",
+        "payload": {
+          "reward": 1.0,
+          "terminated": true,
+          "truncated": false,
+          "info": {
+            "correct": "True",
+            "partial_credit": "1.0",
+            "expected_answer": "220",
+            "normalized_expected": "220",
+            "given_answer": "220",
+            "match_id": "1529307",
+            "task_type": "innings_total"
+          },
+          "system_prompt": null
+        }
+      },
+      {
+        "episode_id": "3266aeb0-947f-40bd-a200-44cf2029493e-episode-15",
+        "step": 1,
+        "timestamp": null,
+        "event_type": "episode_end",
+        "payload": {
+          "total_reward": 1.0,
+          "steps": 1
+        }
+      }
+    ]
+  }
+}

@@ -1,28 +1,33 @@
-# Repo showcase (your frontend)
+# IPL Scorecard Reasoning Showcase
 
-Build a marketing or demo UI **in this repository** that replays a real bench run from Mesocosm.
+This folder contains a static showcase UI for the IPL Scorecard Reasoning environment. It replays an exported Mesocosm run from `data/replay.json`, including the scorecard context, model reasoning, parsed answer, expected answer, and scalar reward.
 
-## Workflow
+## Preview Locally
 
-1. Submit this repo: `mesocosm env submit --name "..." --github-url https://github.com/you/your-repo`
-2. Wait for `ready`, then bench a model:
-   ```bash
-   mesocosm run create --domain YOUR_DOMAIN_ID --vow-version 1.0.0 --model gemini/gemini-3.1-flash-lite --episodes 1 --visibility gallery_public
-   ```
-3. Export the run (after it completes):
-   ```bash
-   mesocosm run export RUN_ID -o showcase/data/replay.json
-   ```
-4. Point your frontend at `replay.json`. Each turn includes:
-   - `observation` — env state for your UI
-   - `reasoning` — model text (what the agent said before acting)
-   - `action` — parsed action sent to the env
-   - `reward`, `terminated`, etc.
+From the repository root:
 
-Public runs (`gallery_public` + completed) can also be viewed at:
+```bash
+python3 -m http.server 8080
+```
 
-`https://mesocosm…/runs/RUN_ID` (no login).
+Then open:
 
-## `replay.json` shape
+```text
+http://localhost:8080/showcase/
+```
 
-See `replay.example.json`. Use `replay[episode_id][i].reasoning` for showcase-style prose, similar to Mesocosm’s curated trading demo.
+## GitHub Pages
+
+Once the Pages workflow has deployed, the public showcase is available at:
+
+```text
+https://navneethd8.github.io/ipl-scorecard-reasoning-env/
+```
+
+## Refresh Replay Data
+
+```bash
+mesocosm run export RUN_ID -o showcase/data/replay.json
+```
+
+The current replay is from 15-episode run `3266aeb0-947f-40bd-a200-44cf2029493e` using binding vow `1.0.1`. It includes 11 full-credit and 4 partial-credit episodes so the showcase demonstrates the scalar reward behavior.

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import random
 import re
 from pathlib import Path
@@ -11,6 +12,8 @@ from typing import Any
 from bench_common.env_sdk.base import BaseEnv, StepResult
 
 DATA_PATH = Path(__file__).with_name("data") / "ipl_matches.json"
+DEFAULT_LOCAL_SEED = 4
+LOCAL_SEED_ENV = "IPL_SCORECARD_LOCAL_SEED"
 
 
 def _load_dataset() -> dict[str, Any]:
@@ -20,6 +23,30 @@ def _load_dataset() -> dict[str, Any]:
 
 DATASET = _load_dataset()
 MATCHES: list[dict[str, Any]] = DATASET["matches"]
+
+
+def _coerce_seed(value: Any) -> int | None:
+    if value is None or value == "":
+        return None
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def _resolve_seed(seed: int | None, params: dict[str, Any]) -> int:
+    """Prefer platform seed, then local overrides, then a curated local seed."""
+    for value in (
+        seed,
+        params.get("local_seed"),
+        params.get("showcase_seed"),
+        os.environ.get(LOCAL_SEED_ENV),
+        DEFAULT_LOCAL_SEED,
+    ):
+        coerced = _coerce_seed(value)
+        if coerced is not None:
+            return coerced
+    return DEFAULT_LOCAL_SEED
 
 
 def _normalize_answer(value: Any) -> str:
@@ -183,7 +210,8 @@ class MyEnv(BaseEnv):
         self._rng = random.Random()
 
     def reset(self, seed: int | None = None, **params: Any) -> dict[str, Any]:
-        self._rng.seed(seed)
+        effective_seed = _resolve_seed(seed, params)
+        self._rng.seed(effective_seed)
         match = self._rng.choice(MATCHES)
         task_type = self._rng.choice(
             [
@@ -203,6 +231,7 @@ class MyEnv(BaseEnv):
 
         return {
             "source": DATASET["source"],
+            "seed": effective_seed,
             "instructions": "Answer the question using the supplied IPL scorecard. Reply with only the requested value, or JSON like {\"answer\": \"...\"}.",
             "question": task["question"],
             "match": {
