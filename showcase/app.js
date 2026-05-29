@@ -4,6 +4,7 @@ const state = {
   data: null,
   episodes: [],
   selectedIndex: 0,
+  chatScrollTimers: [],
 };
 
 const $ = (id) => document.getElementById(id);
@@ -138,6 +139,16 @@ function buildEpisodeModel(episode) {
   };
 }
 
+function clearChatScrollTimers() {
+  state.chatScrollTimers.forEach((timer) => window.clearTimeout(timer));
+  state.chatScrollTimers = [];
+}
+
+function scrollChatToBottom(behavior = "smooth") {
+  const chatWindow = $("chatWindow");
+  chatWindow.scrollTo({ top: chatWindow.scrollHeight, behavior });
+}
+
 function renderMetrics() {
   const run = state.data.run ?? {};
   const episodes = state.episodes;
@@ -267,11 +278,13 @@ function renderScorecard(episode) {
 }
 
 function renderChat(episode) {
+  clearChatScrollTimers();
   const messages = episode.chatMessages?.length
     ? episode.chatMessages
     : [{ role: "env", label: "Replay", text: episode.reasoning, meta: "Fallback transcript" }];
 
-  $("chatWindow").innerHTML = messages
+  const chatWindow = $("chatWindow");
+  chatWindow.innerHTML = messages
     .map((message, index) => {
       const delay = `${(index * 0.55).toFixed(2)}s`;
       const content =
@@ -289,6 +302,28 @@ function renderChat(episode) {
       `;
     })
     .join("");
+
+  chatWindow.scrollTo({ top: 0, behavior: "instant" });
+  messages.forEach((_, index) => {
+    const timer = window.setTimeout(() => scrollChatToBottom(), index * 550 + 520);
+    state.chatScrollTimers.push(timer);
+  });
+}
+
+function renderChatIntro(episode) {
+  clearChatScrollTimers();
+  const steps = episode.chatMessages?.filter((message) => message.role === "env").length || 3;
+  $("chatWindow").innerHTML = `
+    <div class="chat-start-card">
+      <div class="play-icon">▶</div>
+      <div>
+        <span class="label">Ready to replay</span>
+        <strong>Play the full ${steps}-step agent conversation</strong>
+        <p>Questions, solved examples, model thinking, model output, and reward feedback will appear in sequence.</p>
+      </div>
+    </div>
+  `;
+  $("replayChatButton").textContent = "Play Animation";
 }
 
 function renderEpisode() {
@@ -306,7 +341,7 @@ function renderEpisode() {
   document.title = `${teams.join(" vs ") || "IPL"} · Showcase`;
   renderTeams(episode);
   renderScorecard(episode);
-  renderChat(episode);
+  renderChatIntro(episode);
 
   const header = document.querySelector(".match-header .label");
   header.textContent = `${episode.taskType.replaceAll("_", " ")} · ${episode.match.date ?? "date unknown"} · ${venue}`;
@@ -320,7 +355,9 @@ function render() {
 
 function replayChat() {
   const episode = state.episodes[state.selectedIndex];
-  if (episode) renderChat(episode);
+  if (!episode) return;
+  $("replayChatButton").textContent = "Replay Animation";
+  renderChat(episode);
 }
 
 async function init() {
