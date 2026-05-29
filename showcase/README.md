@@ -30,4 +30,4 @@ https://navneethd8.github.io/ipl-scorecard-reasoning-env/
 mesocosm run export RUN_ID -o showcase/data/replay.json
 ```
 
-The current replay is from 15-episode run `3266aeb0-947f-40bd-a200-44cf2029493e` using binding vow `1.0.1`. It includes 11 full-credit and 4 partial-credit episodes so the showcase demonstrates the scalar reward behavior.
+The current replay is from in-context learning run `cd943f9d-32f4-49ce-9cb0-8ff1e1c9e5ac` using binding vow `1.1.0`. Each episode shows two solved lesson turns followed by a held-out challenge.

@@ -22,8 +22,12 @@ function asPercent(value) {
   return `${Math.round(number * 100)}%`;
 }
 
+function traceEvents(episode) {
+  return state.data?.traces?.[episode.id] ?? [];
+}
+
 function findTrace(episode, type, phase) {
-  const events = state.data?.traces?.[episode.id] ?? [];
+  const events = traceEvents(episode);
   return events.find((event) => {
     if (event.event_type !== type) return false;
     if (!phase) return true;
@@ -31,12 +35,27 @@ function findTrace(episode, type, phase) {
   });
 }
 
+function findLastTrace(episode, type) {
+  return traceEvents(episode)
+    .filter((event) => event.event_type === type)
+    .at(-1);
+}
+
+function observationsForPhase(episode, phase) {
+  return traceEvents(episode)
+    .filter((event) => event.event_type === "observation")
+    .map((event) => event.payload?.data)
+    .filter((data) => data?.phase === phase);
+}
+
 function buildEpisodeModel(episode) {
+  const lessons = observationsForPhase(episode, "lesson");
+  const challenge = observationsForPhase(episode, "challenge").at(-1);
   const startObservation = findTrace(episode, "observation", "start");
-  const modelCall = findTrace(episode, "model_call");
-  const action = findTrace(episode, "action");
-  const stepResult = findTrace(episode, "step_result");
-  const observation = startObservation?.payload?.data ?? {};
+  const modelCall = findLastTrace(episode, "model_call");
+  const action = findLastTrace(episode, "action");
+  const stepResult = findLastTrace(episode, "step_result");
+  const observation = challenge ?? startObservation?.payload?.data ?? {};
   const info = stepResult?.payload?.info ?? episode.terminal_info ?? {};
 
   return {
@@ -44,6 +63,7 @@ function buildEpisodeModel(episode) {
     seed: episode.seed,
     reward: Number(stepResult?.payload?.reward ?? episode.total_reward ?? 0),
     observation,
+    lessons,
     question: observation.question ?? "Question unavailable",
     match: observation.match ?? {},
     reasoning: modelCall?.payload?.text ?? action?.payload?.action ?? "No model text exported.",
@@ -120,8 +140,29 @@ function renderTeams(episode) {
 
 function renderScorecard(episode) {
   const scorecard = episode.match.scorecard ?? [];
-  $("scorecard").innerHTML = scorecard
+  const lessonHtml = episode.lessons?.length
+    ? `
+      <div class="lessons">
+        ${episode.lessons
+          .map(
+            (lesson, index) => `
+              <div class="lesson">
+                <span class="label">Solved Example ${index + 1}</span>
+                <strong>${escapeHtml(lesson.question)}</strong>
+                <p>${escapeHtml(lesson.solved_example?.worked_solution ?? "")}</p>
+                <span class="score">Answer: ${escapeHtml(lesson.solved_example?.answer ?? "--")}</span>
+              </div>
+            `,
+          )
+          .join("")}
+      </div>
+    `
+    : "";
+
+  const inningsHtml = scorecard
     .map((innings) => {
+      const firstSix = (innings.over_runs ?? []).slice(0, 6).reduce((sum, runs) => sum + Number(runs), 0);
+      const lastFive = (innings.over_runs ?? []).slice(15, 20).reduce((sum, runs) => sum + Number(runs), 0);
       const topBatters = (innings.top_batters ?? [])
         .slice(0, 3)
         .map((batter) => `<li><span>${escapeHtml(batter.player)}</span><strong>${escapeHtml(batter.runs)}</strong></li>`)
@@ -141,8 +182,8 @@ function renderScorecard(episode) {
             <span class="score">${escapeHtml(innings.total_runs)}/${escapeHtml(innings.wickets_lost)}</span>
           </div>
           <div class="mini-grid">
-            <div class="mini-stat"><span>Powerplay</span><strong>${escapeHtml(innings.powerplay_runs)}</strong></div>
-            <div class="mini-stat"><span>Death Overs</span><strong>${escapeHtml(innings.death_overs_runs)}</strong></div>
+            <div class="mini-stat"><span>First 6 Overs</span><strong>${escapeHtml(firstSix)}</strong></div>
+            <div class="mini-stat"><span>Overs 16-20</span><strong>${escapeHtml(lastFive)}</strong></div>
             <div class="mini-stat"><span>Overs</span><strong>${escapeHtml(innings.overs_batted)}</strong></div>
           </div>
           <div class="panel-title">Top Batters</div>
@@ -153,6 +194,7 @@ function renderScorecard(episode) {
       `;
     })
     .join("");
+  $("scorecard").innerHTML = lessonHtml + inningsHtml;
 }
 
 function renderEpisode() {

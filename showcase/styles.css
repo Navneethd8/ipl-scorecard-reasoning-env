@@ -286,6 +286,29 @@ h3 {
   border-bottom: 1px solid var(--border);
 }
 
+.lessons {
+  display: grid;
+  gap: 10px;
+  margin: 12px 0 18px;
+}
+
+.lesson {
+  border: 1px solid rgba(125, 211, 252, 0.22);
+  border-radius: 16px;
+  background: rgba(125, 211, 252, 0.07);
+  padding: 12px;
+}
+
+.lesson strong {
+  display: block;
+  margin-top: 6px;
+}
+
+.lesson p {
+  color: var(--muted);
+  margin: 8px 0;
+}
+
 .innings:last-child {
   border-bottom: 0;
   padding-bottom: 0;
