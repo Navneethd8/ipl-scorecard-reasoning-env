@@ -9,6 +9,8 @@
   --accent: #7dd3fc;
   --accent-2: #a7f3d0;
   --warn: #fcd34d;
+  --ipl-gold: #fbbf24;
+  --ipl-blue: #38bdf8;
   --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
 }
 
@@ -27,16 +29,50 @@ body {
   font: 16px/1.55 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
+.top-nav {
+  position: sticky;
+  top: 14px;
+  z-index: 20;
+  display: flex;
+  width: fit-content;
+  max-width: calc(100vw - 32px);
+  gap: 6px;
+  margin: 14px auto -24px;
+  padding: 7px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(7, 10, 18, 0.72);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(18px);
+}
+
+.top-nav a {
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-weight: 800;
+  padding: 8px 12px;
+  text-decoration: none;
+}
+
+.top-nav a:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--text);
+}
+
 .shell {
   width: min(1180px, calc(100vw - 32px));
   margin: 0 auto;
-  padding: 48px 0;
+  padding: 64px 0 48px;
 }
 
 .hero,
 .stage,
 .metric-card,
-.episode-card {
+.episode-card,
+.story-card,
+.process-section,
+.results-board {
   border: 1px solid var(--border);
   background: var(--panel);
   box-shadow: var(--shadow);
@@ -53,9 +89,11 @@ body {
 .hero::after {
   content: "";
   position: absolute;
-  inset: auto -10% -45% 35%;
-  height: 260px;
-  background: radial-gradient(circle, rgba(125, 211, 252, 0.2), transparent 68%);
+  inset: auto -8% -34% 28%;
+  height: 320px;
+  background:
+    radial-gradient(circle at 30% 50%, rgba(251, 191, 36, 0.18), transparent 34%),
+    radial-gradient(circle at 68% 45%, rgba(125, 211, 252, 0.22), transparent 50%);
   pointer-events: none;
 }
 
@@ -109,7 +147,7 @@ h3 {
 .hero p {
   max-width: 660px;
   color: var(--muted);
-  font-size: 1.08rem;
+  font-size: 1.14rem;
 }
 
 .hero-actions {
@@ -146,7 +184,7 @@ h3 {
   border: 1px solid var(--border);
   border-radius: 26px;
   background:
-    linear-gradient(180deg, rgba(125, 211, 252, 0.18), rgba(16, 185, 129, 0.1)),
+    linear-gradient(160deg, rgba(56, 189, 248, 0.2), rgba(251, 191, 36, 0.11)),
     var(--panel-strong);
 }
 
@@ -185,8 +223,114 @@ h3 {
   color: var(--muted);
 }
 
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin: 18px 0;
+}
+
+.story-card {
+  border-radius: 24px;
+  padding: 22px;
+}
+
+.story-card.wide {
+  grid-column: span 2;
+}
+
+.story-card h2,
+.story-card h3 {
+  margin-bottom: 12px;
+}
+
+.story-card p,
+.process-section p,
+.results-board p {
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+.process-section,
+.results-board {
+  border-radius: 30px;
+  margin: 18px 0;
+  padding: 24px;
+}
+
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.timeline-item {
+  min-height: 180px;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.045);
+  padding: 18px;
+}
+
+.timeline-item span {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  border-radius: 999px;
+  color: var(--ipl-gold);
+  font-weight: 900;
+}
+
+.timeline-item strong {
+  display: block;
+  font-size: 1.22rem;
+  margin-bottom: 8px;
+}
+
+.results-board {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.result-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.result-card {
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 16px;
+}
+
+.result-card span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.result-card strong {
+  display: block;
+  margin-top: 12px;
+  overflow-wrap: anywhere;
+  font-size: 1.4rem;
+  line-height: 1.1;
+}
+
 .stage {
   border-radius: 30px;
+  margin-top: 18px;
   padding: 24px;
 }
 
@@ -255,7 +399,9 @@ h3 {
 .team-card {
   border: 1px solid var(--border);
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.045);
+  background:
+    linear-gradient(135deg, rgba(56, 189, 248, 0.07), rgba(251, 191, 36, 0.045)),
+    rgba(255, 255, 255, 0.045);
   padding: 16px;
 }
 
@@ -392,9 +538,17 @@ pre {
 @media (max-width: 860px) {
   .hero-grid,
   .metrics,
+  .dashboard-grid,
+  .timeline,
+  .results-board,
+  .result-cards,
   .teams,
   .content-grid {
     grid-template-columns: 1fr;
+  }
+
+  .story-card.wide {
+    grid-column: auto;
   }
 
   .section-heading,

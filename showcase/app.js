@@ -81,9 +81,15 @@ function renderMetrics() {
   const totalReward = episodes.reduce((sum, episode) => sum + episode.reward, 0);
   const avgReward = episodes.length ? totalReward / episodes.length : 0;
   const model = run.config?.agent_config?.model ?? "unknown model";
+  const fullCredit = episodes.filter((episode) => episode.reward >= 1).length;
+  const partialCredit = episodes.filter((episode) => episode.reward > 0 && episode.reward < 1).length;
 
   $("averageReward").textContent = asPercent(run.scores?.average_reward ?? avgReward);
   $("runMeta").textContent = `${model} · ${episodes.length} episodes · vow ${state.data.binding_vow_version}`;
+
+  if ($("runIdPill")) $("runIdPill").textContent = run.id ?? "--";
+  if ($("fullCreditCount")) $("fullCreditCount").textContent = `${fullCredit}/${episodes.length}`;
+  if ($("partialCreditCount")) $("partialCreditCount").textContent = `${partialCredit}/${episodes.length}`;
 
   const metricItems = [
     ["Run Status", run.status ?? "unknown"],

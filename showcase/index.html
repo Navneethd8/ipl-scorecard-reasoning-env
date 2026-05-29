@@ -7,19 +7,28 @@
     <link rel="stylesheet" href="./styles.css?v=learning-1.1.0" />
   </head>
   <body>
+    <nav class="top-nav" aria-label="Showcase navigation">
+      <a href="#overview">Overview</a>
+      <a href="#environment">Environment</a>
+      <a href="#results">Results</a>
+      <a href="#episodes">Replay</a>
+    </nav>
+
     <main class="shell">
-      <section class="hero">
-        <div class="eyebrow">Mesocosm Showcase</div>
+      <section class="hero" id="overview">
+        <div class="eyebrow">SWECCathon · Mesocosm Benchmark</div>
         <div class="hero-grid">
           <div>
-            <h1>Can an agent learn IPL scorecard rules from examples?</h1>
+            <h1>Teaching agents to reason like IPL analysts.</h1>
             <p>
-              This showcase replays a real Mesocosm run where Gemini studies
-              solved IPL scorecard examples, then applies the learned pattern
-              to a held-out cricket match.
+              IPL Scorecard Reasoning is a sports analytics environment built
+              around real Cricsheet Indian Premier League data. Agents do not
+              just read an answer from a JSON blob. They study solved examples,
+              infer a scoring rule, and apply it to a fresh scorecard.
             </p>
             <div class="hero-actions">
-              <a class="button" href="#episodes">Replay Episodes</a>
+              <a class="button" href="#episodes">Open Live Replay</a>
+              <a class="button secondary" href="#environment">Read the Design</a>
               <a class="button secondary" href="https://cricsheet.org/downloads/" target="_blank" rel="noreferrer">Data Source</a>
             </div>
           </div>
@@ -33,11 +42,125 @@
 
       <section class="metrics" id="metrics" aria-label="Run metrics"></section>
 
+      <section class="dashboard-grid" id="environment">
+        <article class="story-card wide">
+          <div class="eyebrow">Environment Context</div>
+          <h2>Why cricket scorecards?</h2>
+          <p>
+            Cricket is full of compact symbolic data: innings totals, wickets,
+            over-by-over scoring, chase targets, and contextual rules. This
+            makes it a good hackathon benchmark because the answer is
+            deterministic, but the agent still needs to learn the right
+            operation from context.
+          </p>
+          <p>
+            The environment uses a compact derived dataset from Cricsheet IPL
+            matches. Result fields and precomputed helper totals are removed
+            from the challenge view, forcing the model to work from the raw
+            scorecard.
+          </p>
+        </article>
+
+        <article class="story-card">
+          <div class="eyebrow">Dataset</div>
+          <h3>Real IPL Data</h3>
+          <p>
+            Ball-by-ball Cricsheet data is transformed into scorecard summaries:
+            teams, venues, innings totals, wickets, over runs, top batters, and
+            bowling figures.
+          </p>
+        </article>
+
+        <article class="story-card">
+          <div class="eyebrow">Learning Signal</div>
+          <h3>Two Examples, One Test</h3>
+          <p>
+            Every episode gives two solved examples for one hidden pattern, then
+            asks the agent to apply that same pattern to a held-out IPL match.
+          </p>
+        </article>
+
+        <article class="story-card">
+          <div class="eyebrow">Rules Tested</div>
+          <h3>Cricket Arithmetic</h3>
+          <p>
+            Tasks cover powerplay comparisons, death-over totals, chase
+            requirements, and winner-margin inference from innings scorecards.
+          </p>
+        </article>
+
+        <article class="story-card">
+          <div class="eyebrow">Reward</div>
+          <h3>Scalar Credit</h3>
+          <p>
+            Full answers receive 1.0. Partially correct answers, such as the
+            right team and number with incomplete phrasing, receive partial
+            credit.
+          </p>
+        </article>
+      </section>
+
+      <section class="process-section">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">Build Process</div>
+            <h2>From raw cricket data to agent evaluation</h2>
+          </div>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <span>01</span>
+            <strong>Collect</strong>
+            <p>Pull public IPL match data from Cricsheet and derive compact scorecards.</p>
+          </div>
+          <div class="timeline-item">
+            <span>02</span>
+            <strong>Hide</strong>
+            <p>Strip answer-leaking result fields and precomputed aggregates from challenge observations.</p>
+          </div>
+          <div class="timeline-item">
+            <span>03</span>
+            <strong>Teach</strong>
+            <p>Show two solved examples so the model can infer the calculation pattern in-context.</p>
+          </div>
+          <div class="timeline-item">
+            <span>04</span>
+            <strong>Evaluate</strong>
+            <p>Grade the held-out answer with scalar reward and replay the trace in Mesocosm.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="results-board" id="results">
+        <div>
+          <div class="eyebrow">Latest Run</div>
+          <h2>Benchmark Summary</h2>
+          <p>
+            This page is backed by an exported Mesocosm replay. The numbers
+            below are loaded directly from the run JSON used by the replay.
+          </p>
+        </div>
+        <div class="result-cards">
+          <div class="result-card">
+            <span>Run ID</span>
+            <strong id="runIdPill">--</strong>
+          </div>
+          <div class="result-card">
+            <span>Full Credit</span>
+            <strong id="fullCreditCount">--</strong>
+          </div>
+          <div class="result-card">
+            <span>Partial Credit</span>
+            <strong id="partialCreditCount">--</strong>
+          </div>
+        </div>
+      </section>
+
       <section class="stage" id="episodes">
         <div class="section-heading">
           <div>
-            <div class="eyebrow">Replay</div>
-            <h2>Episode Timeline</h2>
+            <div class="eyebrow">Interactive Replay</div>
+            <h2>Watch the agent learn, then answer</h2>
           </div>
           <div class="tabs" id="episodeTabs" aria-label="Episode selector"></div>
         </div>
