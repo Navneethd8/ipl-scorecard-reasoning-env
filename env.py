@@ -123,24 +123,7 @@ def _answer_score(action: Any, expected_answer: Any) -> tuple[float, str, str]:
     return 0.0, response, expected
 
 
-def _victory_margin(match: dict[str, Any]) -> str:
-    result_by = match.get("result_by", {})
-    if not result_by:
-        return "no margin"
-    kind, amount = next(iter(result_by.items()))
-    return f"{amount} {kind}"
-
-
-def _match_high_scorer(match: dict[str, Any]) -> dict[str, Any]:
-    batters = [
-        batter
-        for innings in match["innings"]
-        for batter in innings.get("top_batters", [])
-    ]
-    return sorted(batters, key=lambda item: (-item["runs"], item["player"]))[0]
-
-
-def _scorecard(match: dict[str, Any]) -> list[dict[str, Any]]:
+def _raw_scorecard(match: dict[str, Any]) -> list[dict[str, Any]]:
     return [
         {
             "team": innings["team"],
@@ -148,8 +131,6 @@ def _scorecard(match: dict[str, Any]) -> list[dict[str, Any]]:
             "wickets_lost": innings["wickets_lost"],
             "overs_batted": innings["overs_batted"],
             "over_runs": innings["over_runs"],
-            "powerplay_runs": innings["powerplay_runs"],
-            "death_overs_runs": innings["death_overs_runs"],
             "top_batters": innings["top_batters"],
             "best_bowling_figures": innings["best_bowling_figures"],
         }
@@ -157,106 +138,186 @@ def _scorecard(match: dict[str, Any]) -> list[dict[str, Any]]:
     ]
 
 
-def _build_task(match: dict[str, Any], task_type: str, rng: random.Random) -> dict[str, Any]:
+def _match_observation(match: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "match_id": match["match_id"],
+        "date": match["date"],
+        "season": match["season"],
+        "event": match["event"],
+        "match_number": match.get("match_number"),
+        "city": match.get("city"),
+        "venue": match.get("venue"),
+        "teams": match["teams"],
+        "toss": match.get("toss", {}),
+        "scorecard": _raw_scorecard(match),
+    }
+
+
+def _powerplay_task(match: dict[str, Any], _: random.Random) -> dict[str, Any]:
+    first, second = match["innings"][0], match["innings"][1]
+    first_runs = sum(first["over_runs"][:6])
+    second_runs = sum(second["over_runs"][:6])
+    difference = first_runs - second_runs
+    if difference == 0:
+        answer = "tie"
+        solution = f"{first['team']} and {second['team']} both made {first_runs} in overs 1-6."
+    else:
+        leader = first["team"] if difference > 0 else second["team"]
+        answer = f"{leader} by {abs(difference)} runs"
+        solution = (
+            f"Sum overs 1-6 for each innings. {first['team']}: {first_runs}; "
+            f"{second['team']}: {second_runs}. The difference is {abs(difference)}."
+        )
+    return {
+        "question": "Using only the over-by-over runs, which team scored more in overs 1-6, and by how many?",
+        "answer": answer,
+        "task_type": "powerplay_pattern",
+        "worked_solution": solution,
+    }
+
+
+def _death_overs_task(match: dict[str, Any], rng: random.Random) -> dict[str, Any]:
+    innings = rng.choice(match["innings"])
+    runs = sum(innings["over_runs"][15:20])
+    return {
+        "question": f"Using only over-by-over runs, how many runs did {innings['team']} score in overs 16-20?",
+        "answer": str(runs),
+        "task_type": "death_overs_pattern",
+        "worked_solution": (
+            f"Overs 16-20 are entries 16 through 20 in over_runs. "
+            f"For {innings['team']}, these sum to {runs}."
+        ),
+    }
+
+
+def _chase_after_10_task(match: dict[str, Any], _: random.Random) -> dict[str, Any]:
     first, second = match["innings"][0], match["innings"][1]
     target = first["total_runs"] + 1
-    innings = rng.choice(match["innings"])
-
-    if task_type == "winner":
-        question = "Which team won this IPL match?"
-        answer = match["winner"]
-    elif task_type == "margin":
-        question = "What was the victory margin? Answer like '35 runs' or '7 wickets'."
-        answer = _victory_margin(match)
-    elif task_type == "player_of_match":
-        question = "Who was named player of the match?"
-        answer = ", ".join(match.get("player_of_match", []))
-    elif task_type == "target":
-        question = f"What target did {second['team']} need at the start of the chase?"
-        answer = str(target)
-    elif task_type == "powerplay":
-        difference = first["powerplay_runs"] - second["powerplay_runs"]
-        if difference == 0:
-            answer = "tie"
-        else:
-            leader = first["team"] if difference > 0 else second["team"]
-            answer = f"{leader} by {abs(difference)} runs"
-        question = "Which team scored more runs in the first six overs, and by how many?"
-    elif task_type == "death_overs":
-        question = f"How many runs did {innings['team']} score from overs 16 through 20?"
-        answer = str(innings["death_overs_runs"])
-    elif task_type == "chase_after_10":
-        chase_runs_after_10 = sum(second["over_runs"][:10])
-        question = f"After 10 overs of the chase, how many runs did {second['team']} still need to win?"
-        answer = str(max(target - chase_runs_after_10, 0))
-    elif task_type == "highest_scorer":
-        top = _match_high_scorer(match)
-        question = "Which batter made the highest individual score in this match?"
-        answer = top["player"]
-    else:
-        question = f"How many total runs did {innings['team']} score?"
-        answer = str(innings["total_runs"])
-
+    chase_after_10 = sum(second["over_runs"][:10])
+    answer = str(max(target - chase_after_10, 0))
     return {
-        "question": question,
+        "question": f"After 10 overs of the chase, how many runs did {second['team']} still need to win?",
         "answer": answer,
-        "task_type": task_type,
+        "task_type": "chase_requirement_pattern",
+        "worked_solution": (
+            f"The target is first-innings total plus one: {first['total_runs']} + 1 = {target}. "
+            f"{second['team']} made {chase_after_10} in overs 1-10, so they needed {answer} more."
+        ),
     }
+
+
+def _winner_margin_task(match: dict[str, Any], _: random.Random) -> dict[str, Any]:
+    first, second = match["innings"][0], match["innings"][1]
+    if second["total_runs"] > first["total_runs"]:
+        wickets = 10 - second["wickets_lost"]
+        answer = f"{second['team']} by {wickets} wickets"
+        solution = (
+            f"{second['team']} chased {first['total_runs'] + 1} and finished on "
+            f"{second['total_runs']}/{second['wickets_lost']}. Wickets remaining: 10 - "
+            f"{second['wickets_lost']} = {wickets}."
+        )
+    else:
+        runs = first["total_runs"] - second["total_runs"]
+        answer = f"{first['team']} by {runs} runs"
+        solution = (
+            f"{first['team']} made {first['total_runs']} and {second['team']} made "
+            f"{second['total_runs']}. The margin is {runs} runs."
+        )
+    return {
+        "question": "Infer the winner and victory margin from the two innings scorecards.",
+        "answer": answer,
+        "task_type": "winner_margin_pattern",
+        "worked_solution": solution,
+    }
+
+
+TASK_BUILDERS = {
+    "powerplay_pattern": _powerplay_task,
+    "death_overs_pattern": _death_overs_task,
+    "chase_requirement_pattern": _chase_after_10_task,
+    "winner_margin_pattern": _winner_margin_task,
+}
 
 
 class MyEnv(BaseEnv):
     def __init__(self) -> None:
-        self._item: dict[str, Any] | None = None
+        self._items: list[dict[str, Any]] = []
+        self._step_index = 0
+        self._seed: int | None = None
         self._rng = random.Random()
 
     def reset(self, seed: int | None = None, **params: Any) -> dict[str, Any]:
         effective_seed = _resolve_seed(seed, params)
+        self._seed = effective_seed
         self._rng.seed(effective_seed)
-        match = self._rng.choice(MATCHES)
-        task_type = self._rng.choice(
-            [
-                "winner",
-                "margin",
-                "player_of_match",
-                "target",
-                "powerplay",
-                "death_overs",
-                "chase_after_10",
-                "highest_scorer",
-                "innings_total",
-            ]
-        )
-        task = _build_task(match, task_type, self._rng)
-        self._item = {**task, "match_id": match["match_id"]}
+        task_type = self._rng.choice(list(TASK_BUILDERS))
+        matches = self._rng.sample(MATCHES, 3)
+        builder = TASK_BUILDERS[task_type]
+        self._items = []
+        self._step_index = 0
 
-        return {
+        for index, match in enumerate(matches):
+            task = builder(match, self._rng)
+            phase = "challenge" if index == 2 else "lesson"
+            self._items.append(
+                {
+                    **task,
+                    "phase": phase,
+                    "match": match,
+                    "match_id": match["match_id"],
+                    "lesson_number": index + 1 if phase == "lesson" else None,
+                }
+            )
+
+        return self._observation(self._items[0])
+
+    def _observation(self, item: dict[str, Any]) -> dict[str, Any]:
+        observation = {
             "source": DATASET["source"],
-            "seed": effective_seed,
-            "instructions": "Answer the question using the supplied IPL scorecard. Reply with only the requested value, or JSON like {\"answer\": \"...\"}.",
-            "question": task["question"],
-            "match": {
-                "match_id": match["match_id"],
-                "date": match["date"],
-                "season": match["season"],
-                "event": match["event"],
-                "match_number": match.get("match_number"),
-                "city": match.get("city"),
-                "venue": match.get("venue"),
-                "teams": match["teams"],
-                "toss": match.get("toss", {}),
-                "result": {
-                    "winner": match["winner"],
-                    "by": match.get("result_by", {}),
-                    "player_of_match": match.get("player_of_match", []),
-                },
-                "scorecard": _scorecard(match),
-            },
+            "seed": self._seed,
+            "phase": item["phase"],
+            "episode_step": self._step_index + 1,
+            "max_steps": 3,
+            "task_type": item["task_type"],
+            "instructions": (
+                "Learn the calculation pattern from the solved examples. "
+                "For lesson turns, reply with a short acknowledgement. On the challenge turn, "
+                "apply the same pattern and answer with the requested value or JSON like "
+                "{\"answer\": \"...\"}."
+            ),
+            "question": item["question"],
+            "match": _match_observation(item["match"]),
         }
+        if item["phase"] == "lesson":
+            observation["solved_example"] = {
+                "lesson_number": item["lesson_number"],
+                "answer": item["answer"],
+                "worked_solution": item["worked_solution"],
+            }
+        return observation
 
     def step(self, action: Any) -> StepResult:
-        if self._item is None:
+        if not self._items:
             raise RuntimeError("Call reset() before step()")
-        reward, response, expected = _answer_score(action, self._item["answer"])
+        item = self._items[self._step_index]
+
+        if item["phase"] == "lesson":
+            self._step_index += 1
+            return StepResult(
+                observation=self._observation(self._items[self._step_index]),
+                reward=0.0,
+                terminated=False,
+                truncated=False,
+                info={
+                    "phase": "lesson",
+                    "expected_answer": str(item["answer"]),
+                    "message": "Solved example acknowledged; continue learning the pattern.",
+                    "match_id": item["match_id"],
+                    "task_type": item["task_type"],
+                },
+            )
+
+        reward, response, expected = _answer_score(action, item["answer"])
         correct = reward >= 1.0
         return StepResult(
             observation={"result": "done"},
@@ -266,10 +327,10 @@ class MyEnv(BaseEnv):
             info={
                 "correct": str(correct),
                 "partial_credit": str(reward),
-                "expected_answer": str(self._item["answer"]),
+                "expected_answer": str(item["answer"]),
                 "normalized_expected": expected,
                 "given_answer": response,
-                "match_id": self._item["match_id"],
-                "task_type": self._item["task_type"],
+                "match_id": item["match_id"],
+                "task_type": item["task_type"],
             },
         )

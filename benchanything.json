@@ -2,31 +2,31 @@
   "id": "ipl-scorecard-reasoning",
   "adapter": "adapter.py",
   "name": "IPL Scorecard Reasoning",
-  "description": "Evaluate whether an agent can answer deterministic cricket scorecard questions from real Indian Premier League data.",
+  "description": "Evaluate whether an agent can learn IPL scorecard calculation patterns from solved examples and apply them to a held-out match.",
 
   "binding_vow": {
-    "version": "1.0.1",
+    "version": "1.1.0",
     "tier": "tier1",
-    "description": "Each episode presents a compact scorecard derived from public Cricsheet Indian Premier League ball-by-ball data. The agent must answer one factual or arithmetic question, such as the winner, victory margin, chase target, powerplay comparison, death-overs runs, or remaining chase runs after 10 overs. Good agents read the structured scorecard carefully, perform the small calculation when needed, and return only the requested value.",
+    "description": "Each episode is a three-step in-context learning task built from public Cricsheet Indian Premier League data. The first two turns show solved examples for one calculation pattern, such as comparing powerplays, summing death-overs runs, deriving chase requirements, or inferring winner and margin. The final turn gives a held-out scorecard with answer-leaking result fields removed. Good agents infer the demonstrated rule from the examples, apply it to raw over-by-over scorecard data, and return the requested value.",
 
     "observation_space": {
       "type": "json",
-      "description": "{ \"source\": object, \"instructions\": string, \"question\": string, \"match\": { \"match_id\": string, \"date\": string, \"season\": string, \"event\": string, \"match_number\": number|null, \"city\": string|null, \"venue\": string|null, \"teams\": string[], \"toss\": object, \"result\": object, \"scorecard\": [{ \"team\": string, \"total_runs\": number, \"wickets_lost\": number, \"overs_batted\": string, \"over_runs\": number[], \"powerplay_runs\": number, \"death_overs_runs\": number, \"top_batters\": object[], \"best_bowling_figures\": object[] }] } }"
+      "description": "{ \"source\": object, \"seed\": number, \"phase\": \"lesson\"|\"challenge\", \"episode_step\": number, \"max_steps\": 3, \"task_type\": string, \"instructions\": string, \"question\": string, \"solved_example\"?: { \"lesson_number\": number, \"answer\": string, \"worked_solution\": string }, \"match\": { \"match_id\": string, \"date\": string, \"season\": string, \"event\": string, \"match_number\": number|null, \"city\": string|null, \"venue\": string|null, \"teams\": string[], \"toss\": object, \"scorecard\": [{ \"team\": string, \"total_runs\": number, \"wickets_lost\": number, \"overs_batted\": string, \"over_runs\": number[], \"top_batters\": object[], \"best_bowling_figures\": object[] }] } }"
     },
 
     "action_space": {
       "type": "text",
-      "description": "Concise answer text, or JSON with an \"answer\" field"
+      "description": "Lesson turns accept any short acknowledgement. Challenge turns expect concise answer text, or JSON with an \"answer\" field."
     },
 
     "reward": {
       "type": "scalar",
       "range": { "low": 0.0, "high": 1.0 },
-      "description": "Continuous score from 0.0 to 1.0. Full credit is awarded for the correct scorecard-derived value; partial credit is awarded for answers that contain the right number, unit, team, or player components but are incomplete."
+      "description": "Lesson turns receive 0.0 reward and provide learning context. The final challenge receives a continuous score from 0.0 to 1.0. Full credit is awarded for the correct held-out scorecard-derived value; partial credit is awarded for answers that contain the right number, unit, or team components but are incomplete."
     },
 
     "episode": {
-      "max_steps": 1,
+      "max_steps": 3,
       "deterministic_reset": true,
       "supports_seed": true,
       "parallel_episodes": 1,

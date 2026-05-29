@@ -1,6 +1,6 @@
 # IPL Scorecard Reasoning
 
-Mesocosm / BenchAnything environment that evaluates whether an agent can answer deterministic cricket scorecard questions from real Indian Premier League data.
+Mesocosm / BenchAnything environment that evaluates whether an agent can learn IPL scorecard calculation patterns from solved examples and apply them to a held-out match.
 
 The environment uses compact scorecard summaries derived from Cricsheet's public IPL JSON download:
 
@@ -25,4 +25,4 @@ Local resets use seed `4` when no seed is supplied, so manual adapter tests are 
 IPL_SCORECARD_LOCAL_SEED=13 python adapter.py
 ```
 
-Each episode provides one IPL match scorecard and asks a factual or arithmetic question, such as winner, margin, chase target, powerplay comparison, death-overs runs, or remaining chase runs after 10 overs.
+Each episode now has three turns: two solved lesson examples, then one challenge scorecard with answer-leaking result fields removed. The task families cover winner/margin inference, chase requirements, powerplay comparisons, and death-over totals.
