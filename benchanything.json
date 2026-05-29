@@ -5,7 +5,7 @@
   "description": "Evaluate whether an agent can answer deterministic cricket scorecard questions from real Indian Premier League data.",
 
   "binding_vow": {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "tier": "tier1",
     "description": "Each episode presents a compact scorecard derived from public Cricsheet Indian Premier League ball-by-ball data. The agent must answer one factual or arithmetic question, such as the winner, victory margin, chase target, powerplay comparison, death-overs runs, or remaining chase runs after 10 overs. Good agents read the structured scorecard carefully, perform the small calculation when needed, and return only the requested value.",
 
@@ -20,9 +20,9 @@
     },
 
     "reward": {
-      "type": "binary",
+      "type": "scalar",
       "range": { "low": 0.0, "high": 1.0 },
-      "description": "1.0 if the normalized answer matches or clearly contains the expected scorecard-derived value, 0.0 otherwise"
+      "description": "Continuous score from 0.0 to 1.0. Full credit is awarded for the correct scorecard-derived value; partial credit is awarded for answers that contain the right number, unit, team, or player components but are incomplete."
     },
 
     "episode": {
@@ -37,13 +37,13 @@
   },
 
   "scoring": {
-    "primary_metric": "accuracy",
+    "primary_metric": "average_reward",
     "higher_is_better": true,
     "metrics": [
       {
-        "name": "accuracy",
+        "name": "average_reward",
         "type": "episode_reward",
-        "aggregation": "pass_rate"
+        "aggregation": "mean"
       }
     ]
   }

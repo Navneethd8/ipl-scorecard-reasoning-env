@@ -45,36 +45,55 @@ def _numbers(text: str) -> list[str]:
     return re.findall(r"\d+(?:\.\d+)?", text)
 
 
-def _answer_is_correct(action: Any, expected_answer: Any) -> tuple[bool, str, str]:
+def _important_words(text: str) -> list[str]:
+    return [
+        word
+        for word in text.split()
+        if word not in {"by", "run", "runs", "wicket", "wickets", "the", "and"}
+        and not word.replace(".", "", 1).isdigit()
+        and len(word) > 2
+    ]
+
+
+def _answer_score(action: Any, expected_answer: Any) -> tuple[float, str, str]:
     expected = _normalize_answer(expected_answer)
     response = _normalize_answer(action)
 
     if response == expected:
-        return True, response, expected
+        return 1.0, response, expected
 
     expected_numbers = _numbers(expected)
     response_numbers = _numbers(response)
     if expected_numbers and response_numbers:
         # Numeric tasks often come back as prose ("They needed 119 runs").
-        expected_words = [
-            word
-            for word in expected.split()
-            if word not in {"by", "run", "runs", "wicket", "wickets"}
-            and not word.replace(".", "", 1).isdigit()
-            and len(word) > 2
-        ]
+        expected_words = _important_words(expected)
         number_matches = expected_numbers == response_numbers
         unit_matches = all(unit not in expected or unit in response for unit in ("run", "runs", "wicket", "wickets"))
         word_matches = all(word in response for word in expected_words)
         if number_matches and unit_matches and word_matches:
-            return True, response, expected
+            return 1.0, response, expected
         if not expected_words and response_numbers[-len(expected_numbers) :] == expected_numbers:
-            return True, response, expected
+            return (1.0 if unit_matches else 0.6), response, expected
+        if number_matches and word_matches:
+            return 0.75, response, expected
+        if number_matches:
+            return 0.6, response, expected
+        if response_numbers[-len(expected_numbers) :] == expected_numbers:
+            return 0.5, response, expected
 
     if len(expected) >= 3 and expected in response:
-        return True, response, expected
+        return 1.0, response, expected
 
-    return False, response, expected
+    if any(unit in expected and unit in response for unit in ("run", "runs", "wicket", "wickets")):
+        return 0.2, response, expected
+
+    expected_words = _important_words(expected)
+    if expected_words:
+        matched_words = sum(1 for word in expected_words if word in response)
+        if matched_words:
+            return round(0.2 + 0.6 * (matched_words / len(expected_words)), 3), response, expected
+
+    return 0.0, response, expected
 
 
 def _victory_margin(match: dict[str, Any]) -> str:
@@ -208,14 +227,16 @@ class MyEnv(BaseEnv):
     def step(self, action: Any) -> StepResult:
         if self._item is None:
             raise RuntimeError("Call reset() before step()")
-        correct, response, expected = _answer_is_correct(action, self._item["answer"])
+        reward, response, expected = _answer_score(action, self._item["answer"])
+        correct = reward >= 1.0
         return StepResult(
             observation={"result": "done"},
-            reward=1.0 if correct else 0.0,
+            reward=reward,
             terminated=True,
             truncated=False,
             info={
                 "correct": str(correct),
+                "partial_credit": str(reward),
                 "expected_answer": str(self._item["answer"]),
                 "normalized_expected": expected,
                 "given_answer": response,
