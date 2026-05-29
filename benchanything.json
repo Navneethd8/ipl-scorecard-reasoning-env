@@ -22,7 +22,7 @@
     "reward": {
       "type": "binary",
       "range": { "low": 0.0, "high": 1.0 },
-      "description": "1.0 if the normalized answer exactly matches the expected scorecard-derived value, 0.0 otherwise"
+      "description": "1.0 if the normalized answer matches or clearly contains the expected scorecard-derived value, 0.0 otherwise"
     },
 
     "episode": {

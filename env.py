@@ -41,6 +41,40 @@ def _normalize_answer(value: Any) -> str:
     return text.strip()
 
 
+def _numbers(text: str) -> list[str]:
+    return re.findall(r"\d+(?:\.\d+)?", text)
+
+
+def _answer_is_correct(action: Any, expected_answer: Any) -> tuple[bool, str, str]:
+    expected = _normalize_answer(expected_answer)
+    response = _normalize_answer(action)
+
+    if response == expected:
+        return True, response, expected
+
+    expected_numbers = _numbers(expected)
+    response_numbers = _numbers(response)
+    if expected_numbers and response_numbers:
+        # Numeric tasks often come back as prose ("They needed 119 runs").
+        expected_words = [
+            word
+            for word in expected.split()
+            if word not in {"by", "run", "runs", "wicket", "wickets"}
+            and not word.replace(".", "", 1).isdigit()
+            and len(word) > 2
+        ]
+        number_matches = expected_numbers == response_numbers
+        unit_matches = all(unit not in expected or unit in response for unit in ("run", "runs", "wicket", "wickets"))
+        word_matches = all(word in response for word in expected_words)
+        if number_matches and unit_matches and word_matches:
+            return True, response, expected
+
+    if len(expected) >= 3 and expected in response:
+        return True, response, expected
+
+    return False, response, expected
+
+
 def _victory_margin(match: dict[str, Any]) -> str:
     result_by = match.get("result_by", {})
     if not result_by:
@@ -172,9 +206,7 @@ class MyEnv(BaseEnv):
     def step(self, action: Any) -> StepResult:
         if self._item is None:
             raise RuntimeError("Call reset() before step()")
-        expected = _normalize_answer(self._item["answer"])
-        response = _normalize_answer(action)
-        correct = response == expected
+        correct, response, expected = _answer_is_correct(action, self._item["answer"])
         return StepResult(
             observation={"result": "done"},
             reward=1.0 if correct else 0.0,
@@ -183,6 +215,7 @@ class MyEnv(BaseEnv):
             info={
                 "correct": str(correct),
                 "expected_answer": str(self._item["answer"]),
+                "normalized_expected": expected,
                 "given_answer": response,
                 "match_id": self._item["match_id"],
                 "task_type": self._item["task_type"],
