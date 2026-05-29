@@ -48,6 +48,68 @@ function observationsForPhase(episode, phase) {
     .filter((data) => data?.phase === phase);
 }
 
+function eventForStep(episode, type, step) {
+  return traceEvents(episode).find((event) => event.event_type === type && event.step === step);
+}
+
+function buildChatMessages(episode) {
+  const beforeAgent = traceEvents(episode).filter(
+    (event) => event.event_type === "observation" && event.payload?.phase === "before_agent",
+  );
+  const messages = [];
+
+  beforeAgent.forEach((event) => {
+    const step = event.step;
+    const data = event.payload?.data ?? {};
+    const modelCall = eventForStep(episode, "model_call", step);
+    const result = eventForStep(episode, "step_result", step);
+    const resultPayload = result?.payload ?? {};
+    const phase = data.phase ?? "step";
+    const stepLabel = phase === "challenge" ? "Challenge" : `Lesson ${data.episode_step ?? step}`;
+
+    messages.push({
+      role: "env",
+      label: `${stepLabel} · Environment`,
+      text: data.question ?? "Question unavailable",
+      meta: `${(data.task_type ?? "pattern").replaceAll("_", " ")} · seed ${data.seed ?? episode.seed}`,
+    });
+
+    if (data.solved_example) {
+      messages.push({
+        role: "coach",
+        label: "Solved Example",
+        text: `${data.solved_example.worked_solution}\n\nAnswer: ${data.solved_example.answer}`,
+        meta: "Training signal",
+      });
+    }
+
+    messages.push({
+      role: "thinking",
+      label: "Model Thinking",
+      text: "",
+      meta: "Reading scorecard and applying the learned rule",
+    });
+
+    messages.push({
+      role: "model",
+      label: "Gemini Output",
+      text: modelCall?.payload?.text ?? "No model output exported.",
+      meta: modelCall?.payload?.model ?? "model",
+    });
+
+    messages.push({
+      role: resultPayload.terminated ? "reward" : "continue",
+      label: resultPayload.terminated ? "Final Reward" : "Environment Feedback",
+      text: resultPayload.terminated
+        ? `Reward ${Number(resultPayload.reward ?? 0).toFixed(2)} · Expected: ${resultPayload.info?.expected_answer ?? "--"}`
+        : "Lesson acknowledged. Continue to the next example.",
+      meta: resultPayload.terminated ? "Challenge graded" : "No reward on lesson turns",
+    });
+  });
+
+  return messages;
+}
+
 function buildEpisodeModel(episode) {
   const lessons = observationsForPhase(episode, "lesson");
   const challenge = observationsForPhase(episode, "challenge").at(-1);
@@ -64,6 +126,7 @@ function buildEpisodeModel(episode) {
     reward: Number(stepResult?.payload?.reward ?? episode.total_reward ?? 0),
     observation,
     lessons,
+    chatMessages: buildChatMessages(episode),
     question: observation.question ?? "Question unavailable",
     match: observation.match ?? {},
     reasoning: modelCall?.payload?.text ?? action?.payload?.action ?? "No model text exported.",
@@ -203,6 +266,31 @@ function renderScorecard(episode) {
   $("scorecard").innerHTML = lessonHtml + inningsHtml;
 }
 
+function renderChat(episode) {
+  const messages = episode.chatMessages?.length
+    ? episode.chatMessages
+    : [{ role: "env", label: "Replay", text: episode.reasoning, meta: "Fallback transcript" }];
+
+  $("chatWindow").innerHTML = messages
+    .map((message, index) => {
+      const delay = `${(index * 0.55).toFixed(2)}s`;
+      const content =
+        message.role === "thinking"
+          ? `<span class="typing-dots"><i></i><i></i><i></i></span>`
+          : escapeHtml(message.text);
+      return `
+        <div class="chat-message ${escapeHtml(message.role)}-message" style="--delay: ${delay}">
+          <div class="chat-meta">
+            <span>${escapeHtml(message.label)}</span>
+            <small>${escapeHtml(message.meta ?? "")}</small>
+          </div>
+          <div class="chat-bubble">${content}</div>
+        </div>
+      `;
+    })
+    .join("");
+}
+
 function renderEpisode() {
   const episode = state.episodes[state.selectedIndex];
   if (!episode) return;
@@ -214,11 +302,11 @@ function renderEpisode() {
   $("rewardPill").textContent = `Reward ${episode.reward.toFixed(2)}`;
   $("expectedAnswer").textContent = episode.expected;
   $("givenAnswer").textContent = episode.given;
-  $("reasoning").textContent = episode.reasoning;
 
   document.title = `${teams.join(" vs ") || "IPL"} · Showcase`;
   renderTeams(episode);
   renderScorecard(episode);
+  renderChat(episode);
 
   const header = document.querySelector(".match-header .label");
   header.textContent = `${episode.taskType.replaceAll("_", " ")} · ${episode.match.date ?? "date unknown"} · ${venue}`;
@@ -228,6 +316,11 @@ function render() {
   renderMetrics();
   renderTabs();
   renderEpisode();
+}
+
+function replayChat() {
+  const episode = state.episodes[state.selectedIndex];
+  if (episode) renderChat(episode);
 }
 
 async function init() {
@@ -244,9 +337,12 @@ async function init() {
   }
 
   render();
+  $("replayChatButton")?.addEventListener("click", replayChat);
 }
 
 init().catch((error) => {
   $("question").textContent = "Could not load replay data";
-  $("reasoning").textContent = `${error.message}\n\nRun a local static server from the repository root:\npython3 -m http.server 8080\n\nThen open http://localhost:8080/showcase/`;
+  $("chatWindow").innerHTML = `<div class="chat-message env-message">${escapeHtml(
+    `${error.message}\n\nRun a local static server from the repository root:\npython3 -m http.server 8080\n\nThen open http://localhost:8080/showcase/`,
+  )}</div>`;
 });

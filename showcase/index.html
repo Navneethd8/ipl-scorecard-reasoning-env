@@ -182,9 +182,14 @@
               <div id="scorecard"></div>
             </section>
 
-            <section class="panel">
-              <div class="panel-title">Agent Reasoning</div>
-              <pre id="reasoning">Loading...</pre>
+            <section class="panel chat-panel">
+              <div class="panel-title chat-title">
+                <span>Agent Conversation</span>
+                <button class="replay-button" id="replayChatButton" type="button">Replay Animation</button>
+              </div>
+              <div class="chat-window" id="chatWindow" aria-live="polite">
+                <div class="chat-message env-message">Loading conversation...</div>
+              </div>
               <div class="answer-row">
                 <div>
                   <span class="label">Expected</span>
