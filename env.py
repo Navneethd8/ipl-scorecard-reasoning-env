@@ -68,6 +68,8 @@ def _answer_is_correct(action: Any, expected_answer: Any) -> tuple[bool, str, st
         word_matches = all(word in response for word in expected_words)
         if number_matches and unit_matches and word_matches:
             return True, response, expected
+        if not expected_words and response_numbers[-len(expected_numbers) :] == expected_numbers:
+            return True, response, expected
 
     if len(expected) >= 3 and expected in response:
         return True, response, expected
